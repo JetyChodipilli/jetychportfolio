@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jety Chodipilli | Java Spring Boot Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+
+        .heading-font { font-family: 'Space Grotesk', sans-serif; }
+
+        .hero-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
+        }
+
+        .glass {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-link {
+            position: relative;
+            cursor: pointer;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #f97316;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after, .nav-link.active:after { width: 100%; }
+
+        .experience-card {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .experience-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-hover {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-12px);
+        }
+
+        .project-img {
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover .project-img {
+            transform: scale(1.08);
+        }
+
+        .horizontal-scroll {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .horizontal-scroll::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-white">
+
+    <!-- HEADER -->
+    <header class="glass sticky top-0 z-50 border-b border-white/10">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-8 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-amber-600 rounded-2xl flex items-center justify-center text-white text-2xl font-bold shadow-inner">JC</div>
+                <div>
+                    <h1 class="heading-font text-2xl tracking-tight">Jety Chodipilli</h1>
+                    <p class="text-xs text-zinc-400 -mt-1">Java Spring Boot Engineer</p>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-9 text-sm font-medium">
+                <a onclick="navigateToSection('hero')" class="nav-link active">Home</a>
+                <a onclick="navigateToSection('about')" class="nav-link">About</a>
+                <a onclick="navigateToSection('skills')" class="nav-link">Skills</a>
+                <a onclick="navigateToSection('experience')" class="nav-link">Experience</a>
+                <a onclick="navigateToSection('projects')" class="nav-link">Projects</a>
+                <a onclick="navigateToSection('blog')" class="nav-link">Blog</a>
+                <a onclick="navigateToSection('contact')" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774876198/Jety_Chodipilli_efjtox.pdf" target="_blank" class="flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 rounded-3xl text-sm font-semibold transition-all">
+                    <i class="fa-solid fa-download"></i> Resume
+                </a>
+                <a href="https://github.com/JetyChodipilli" target="_blank" class="w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-2xl text-2xl transition-all"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com/in/jety-chodipilli" target="_blank" class="w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-2xl text-2xl transition-all"><i class="fa-brands fa-linkedin"></i></a>
+                <button onclick="navigateToSection('contact')" class="px-7 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-3xl transition-all">Work With Me</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section id="hero" class="hero-bg min-h-screen flex items-center relative overflow-hidden">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-8 grid md:grid-cols-12 gap-12 items-center relative z-10">
+            <div class="md:col-span-7">
+                <h1 class="heading-font text-6xl md:text-7xl leading-tight tracking-tighter mb-6">
+                    Building Backend Systems That Actually Work — On Time, Every Time.
+                </h1>
+                <p class="text-xl text-zinc-300 max-w-xl">Java Spring Boot Developer helping MNCs and startups ship reliable software with clean architecture and zero guesswork.</p>
+                <div class="mt-10 flex flex-wrap gap-4">
+                    <button onclick="navigateToSection('projects')" class="px-8 py-4 bg-white text-zinc-900 hover:bg-amber-100 font-semibold rounded-3xl flex items-center gap-3 transition-all">View My Work <i class="fa-solid fa-arrow-down"></i></button>
+                    <a href="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774876198/Jety_Chodipilli_efjtox.pdf" target="_blank" class="px-8 py-4 border border-white/50 hover:border-white font-semibold rounded-3xl flex items-center gap-3 transition-all"><i class="fa-solid fa-download"></i> Resume</a>
+                </div>
+            </div>
+            <div class="md:col-span-5">
+                <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774869278/IMG_20260330_164201_qdj4z0.png" alt="Jety Chodipilli" loading="lazy" class="rounded-3xl shadow-2xl w-full aspect-square object-cover border-8 border-white/30">
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="max-w-screen-2xl mx-auto px-6 md:px-8 py-24 bg-white">
+        <div class="grid md:grid-cols-12 gap-16 items-center">
+            <div class="md:col-span-5">
+                <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774869278/IMG_20260330_164201_qdj4z0.png" alt="Jety Chodipilli" class="rounded-3xl shadow-xl w-full">
+            </div>
+            <div class="md:col-span-7">
+                <h2 class="heading-font text-5xl mb-8">Hi, I'm Jety Chodipilli</h2>
+                <div class="text-lg text-zinc-600 space-y-6">
+                    <p>a Java Spring Boot Developer and Software Engineer with a passion for building backend systems that are fast, scalable, and built to last.</p>
+                    <p>I specialize in helping MNCs and startups bridge the gap between technical execution and business goals, ensuring stakeholders always have clarity on progress and outcomes.</p>
+                    <p>What sets me apart is my ability to manage projects end-to-end with clean architecture and reliable delivery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS - Full List -->
+    <section id="skills" class="py-24 bg-zinc-950">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-8">
+            <div class="text-center mb-12">
+                <span class="bg-orange-100 text-orange-600 px-5 py-2 rounded-3xl text-sm font-semibold">EXPERTISE</span>
+                <h2 class="heading-font text-5xl mt-4 text-white">Skills & Technologies</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-3xl p-8 hover:border-orange-500">
+                    <h3 class="font-semibold text-xl mb-6 flex items-center gap-3 text-white"><i class="fa-solid fa-code text-orange-500"></i> Programming</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">Java (Core, OOPs, Multithreading, Collections, JDBC, Servlets)</span>
+                        <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">Python</span>
+                    </div>
+                </div>
+                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-3xl p-8 hover:border-orange-500">
+                    <h3 class="font-semibold text-xl mb-6 flex items-center gap-3 text-white"><i class="fa-solid fa-layer-group text-orange-500"></i> Frameworks</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">Spring Boot • Spring MVC • Spring Security</span>
+                        <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">Spring Cloud • Hibernate • Spring Data JPA</span>
+                        <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">OAuth 2.0 • Razorpay • PayPal SDKs • JWT</span>
+                    </div>
+                </div>
+                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-3xl p-8 hover:border-orange-500">
+                    <h3 class="font-semibold text-xl mb-6 flex items-center gap-3 text-white"><i class="fa-solid fa-globe text-orange-500"></i> Web Technologies</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">RESTful APIs • WebFlux</span>
+                        <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">HTML • CSS • Thymeleaf • JSP • JavaScript</span>
+                    </div>
+                </div>
+                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-3xl p-8 hover:border-orange-500">
+                    <h3 class="font-semibold text-xl mb-6 flex items-center gap-3 text-white"><i class="fa-solid fa-database text-orange-500"></i> Databases</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">MySQL • Oracle • MongoDB • PostgreSQL</span>
+                    </div>
+                </div>
+                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-3xl p-8 hover:border-orange-500">
+                    <h3 class="font-semibold text-xl mb-6 flex items-center gap-3 text-white"><i class="fa-solid fa-cloud text-orange-500"></i> Cloud & Deployment</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">AWS (EC2) • Docker (CI/CD) • GitHub/GitLab</span>
+                        <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">JUnit/Mockito • Agile/SDLC</span>
+                    </div>
+                </div>
+                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-3xl p-8 hover:border-orange-500">
+                    <h3 class="font-semibold text-xl mb-6 flex items-center gap-3 text-white"><i class="fa-solid fa-message text-orange-500"></i> Messaging & Architecture</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">Apache Kafka • Microservices • Event-Driven</span>
+                        <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">gRPC + Protobuf • Eureka • API Gateway</span>
+                    </div>
+                </div>
+                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-3xl p-8 hover:border-orange-500">
+                    <h3 class="font-semibold text-xl mb-6 flex items-center gap-3 text-white"><i class="fa-solid fa-tools text-orange-500"></i> Tools</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">Git • Postman • IntelliJ IDEA • Eclipse/STS • MobaXterm</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="py-24 bg-white">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-8">
+            <div class="text-center mb-12">
+                <span class="bg-orange-100 text-orange-600 px-5 py-2 rounded-3xl text-sm font-semibold">EXPERIENCE</span>
+                <h2 class="heading-font text-5xl mt-4">Professional Journey</h2>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <div class="experience-card bg-zinc-50 border border-zinc-100 rounded-3xl p-10 shadow-sm">
+                    <div class="flex flex-col md:flex-row justify-between items-start gap-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center text-3xl">💼</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-zinc-900">Java Backend Developer Intern</h3>
+                                <p class="text-orange-600 font-medium">Quick Bitz Tech, Bangalore</p>
+                            </div>
+                        </div>
+                        <div class="text-sm text-zinc-500 font-medium">May 2025 – Sep 2025</div>
+                    </div>
+
+                    <p class="mt-8 text-zinc-700 italic">"Real-world backend engineering — from microservices to cloud integrations, shipped in production."</p>
+
+                    <ul class="mt-10 space-y-5 text-zinc-700">
+                        <li class="flex gap-4"><span class="text-emerald-500 mt-1">✔</span> Built scalable microservices using Java Spring Boot and event-driven architecture with Apache Kafka</li>
+                        <li class="flex gap-4"><span class="text-emerald-500 mt-1">✔</span> Integrated AWS SES for transactional emails and AWS RDS PostgreSQL for data persistence</li>
+                        <li class="flex gap-4"><span class="text-emerald-500 mt-1">✔</span> Contributed to CI/CD pipelines and implemented role-based access control using Spring Security</li>
+                        <li class="flex gap-4"><span class="text-emerald-500 mt-1">✔</span> Developed scheduler logic to automatically manage Purchase Order states (Expired, Active, Pending)</li>
+                    </ul>
+
+                    <a href="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774870409/Jety_Intern_certificate_snfc78.pdf" target="_blank" class="mt-10 inline-flex items-center gap-2 text-sm font-medium text-orange-600 hover:text-orange-700 transition-colors">
+                        <i class="fa-solid fa-file-pdf"></i> View Internship Certificate
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS - Horizontal Scroll with Detailed Descriptions -->
+    <section id="projects" class="py-24 bg-zinc-950">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-8">
+            <div class="text-center mb-12">
+                <span class="bg-orange-100 text-orange-600 px-5 py-2 rounded-3xl text-sm font-semibold">SELECTED WORK</span>
+                <h2 class="heading-font text-5xl mt-4 text-white">Featured Projects</h2>
+            </div>
+
+            <div id="projectScroll" class="horizontal-scroll flex gap-6 md:gap-8 overflow-x-auto pb-12 snap-x snap-mandatory scroll-smooth">
+                <!-- 1. Healthcare Patient Management System -->
+                <div class="project-card min-w-[90vw] md:min-w-[440px] bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden group snap-center">
+                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774878074/Healthcare_mangement_architure_bgguda.png" alt="Healthcare Patient Management System" loading="lazy" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="p-8">
+                        <div class="text-5xl mb-4">🏥</div>
+                        <h3 class="heading-font text-2xl font-medium text-white">Healthcare Patient Management System</h3>
+                        <p class="text-zinc-400 mt-3">A distributed microservices system designed to manage patient data, authentication, billing, and analytics for a healthcare application.</p>
+                        
+                        <div class="mt-6">
+                            <p class="font-medium text-white mb-2">Services Used:</p>
+                            <ul class="text-sm text-zinc-400 space-y-1">
+                                <li>• API Gateway — Routing & JWT validation</li>
+                                <li>• Auth Service — User authentication & JWT management</li>
+                                <li>• Patient Service — CRUD operations, Kafka producer, gRPC client</li>
+                                <li>• Billing Service — Billing operations via gRPC</li>
+                                <li>• Analytics Service — Real-time analytics via Kafka consumer</li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-6">
+                            <p class="font-medium text-white mb-2">Tech Stack:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">Spring Boot</span>
+                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">Spring Cloud Gateway</span>
+                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">Kafka</span>
+                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">gRPC + Protobuf</span>
+                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">JWT</span>
+                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">PostgreSQL</span>
+                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">Docker</span>
+                            </div>
+                        </div>
+
+                        <a href="https://github.com/JetyChodipilli/Healthcare-Patient-Management-System-Microservice" target="_blank" class="mt-8 inline-flex items-center gap-3 text-sm font-medium text-white hover:text-orange-400">
+                            View on GitHub <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 2. Payment Processing Microservice -->
+                <div class="project-card min-w-[90vw] md:min-w-[440px] bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden group snap-center">
+                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774878074/payment_processing_microservice_iomhqu.png" alt="Payment Processing Microservice" loading="lazy" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="p-8">
+                        <div class="text-5xl mb-4">💳</div>
+                        <h3 class="heading-font text-2xl font-medium text-white">Payment Processing Microservice</h3>
+                        <p class="text-zinc-400 mt-3">Secure payment processing microservice integrated with Stripe and MySQL for full transaction tracking.</p>
+                        
+                        <div class="mt-6">
+                            <p class="font-medium text-white mb-2">How it Works:</p>
+                            <ul class="text-sm text-zinc-400 space-y-1">
+                                <li>• User initiates payment via REST API</li>
+                                <li>• Spring Boot service processes charge using Stripe SDK</li>
+                                <li>• Transaction details (charge ID, amount, status) are stored in MySQL</li>
+                                <li>• Full audit trail maintained for every transaction</li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-6">
+                            <p class="font-medium text-white mb-2">Tech Stack:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">Spring Boot 3</span>
+                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">Stripe SDK</span>
+                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">MySQL</span>
+                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">Spring Data JPA</span>
+                            </div>
+                        </div>
+
+                        <a href="https://github.com/JetyChodipilli/Payment-Processing-Microservice-with-Stripe-and-MySQL" target="_blank" class="mt-8 inline-flex items-center gap-3 text-sm font-medium text-white hover:text-orange-400">
+                            View on GitHub <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3. Diabetic Retinopathy Detection -->
+                <div class="project-card min-w-[90vw] md:min-w-[440px] bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden group snap-center">
+                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774878074/diabetic_Retinopathy_architure_biwgvm.png" alt="Diabetic Retinopathy Detection" loading="lazy" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="p-8">
+                        <div class="text-5xl mb-4">🧠</div>
+                        <h3 class="heading-font text-2xl font-medium text-white">Diabetic Retinopathy Detection</h3>
+                        <p class="text-zinc-400 mt-3">Deep learning system for classifying diabetic retinopathy stages from retinal fundus images.</p>
+                        
+                        <div class="mt-6">
+                            <p class="font-medium text-white mb-2">How it Works:</p>
+                            <ul class="text-sm text-zinc-400 space-y-1">
+                                <li>• Preprocessing & data augmentation on fundus images</li>
+                                <li>• Comparative study of 6 CNN architectures</li>
+                                <li>• DenseNet model trained to classify 5 severity stages</li>
+                                <li>• Achieved 98% accuracy on APTOS 2019 dataset</li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-6">
+                            <p class="font-medium text-white mb-2">Tech Stack:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">Python</span>
+                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">TensorFlow</span>
+                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">Keras</span>
+                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">DenseNet</span>
+                            </div>
+                        </div>
+
+                        <a href="https://github.com/JetyChodipilli/Diabetic-Retinopathy-Using-Machine-learning-Algorithms" target="_blank" class="mt-8 inline-flex items-center gap-3 text-sm font-medium text-white hover:text-orange-400">
+                            View on GitHub <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG -->
+    <section id="blog" class="max-w-screen-2xl mx-auto px-6 md:px-8 py-24 bg-zinc-900">
+        <div class="text-center mb-12">
+            <span class="bg-orange-100 text-orange-600 px-5 py-2 rounded-3xl text-sm font-semibold">TECH INSIGHTS</span>
+            <h2 class="heading-font text-5xl mt-4 text-white">Blog & Articles</h2>
+        </div>
+
+        <div class="space-y-24">
+            <div class="blog-card flex flex-col lg:flex-row gap-12 items-center bg-zinc-800/70 backdrop-blur rounded-3xl border border-white/10 hover:border-orange-500 group">
+                <div class="lg:w-5/12">
+                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774877528/healhcare_management_ym7doc.png" alt="Healthcare Microservices Figma Diagram" loading="lazy" class="w-full h-80 object-cover rounded-3xl transition-transform duration-700 group-hover:scale-105">
+                </div>
+                <div class="lg:w-7/12">
+                    <div class="text-xs text-orange-400 font-medium mb-3">MICROSERVICES ARCHITECTURE</div>
+                    <h3 class="font-semibold text-3xl text-white">Building Resilient Microservices with Kafka & Spring Cloud</h3>
+                    <p class="text-zinc-400 mt-6 leading-relaxed">The Figma diagram (left) shows the complete architecture: Spring Cloud Gateway as entry point, multiple backend services, Apache Kafka for asynchronous events, and gRPC for high-performance inter-service communication.</p>
+                </div>
+            </div>
+
+            <div class="blog-card flex flex-col lg:flex-row-reverse gap-12 items-center bg-zinc-800/70 backdrop-blur rounded-3xl border border-white/10 hover:border-orange-500 group">
+                <div class="lg:w-5/12">
+                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774877528/payment_service_wlhtdi.png" alt="Payment Processing Figma Diagram" loading="lazy" class="w-full h-80 object-cover rounded-3xl transition-transform duration-700 group-hover:scale-105">
+                </div>
+                <div class="lg:w-7/12">
+                    <div class="text-xs text-orange-400 font-medium mb-3">PAYMENT FLOW</div>
+                    <h3 class="font-semibold text-3xl text-white">Secure Payment Processing with Stripe in Spring Boot</h3>
+                    <p class="text-zinc-400 mt-6 leading-relaxed">The Figma diagram (right) illustrates the full payment journey: request → Spring Boot microservice → Stripe processing → MySQL audit trail with webhook support.</p>
+                </div>
+            </div>
+
+            <div class="blog-card flex flex-col lg:flex-row gap-12 items-center bg-zinc-800/70 backdrop-blur rounded-3xl border border-white/10 hover:border-orange-500 group">
+                <div class="lg:w-5/12">
+                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774877528/diabatic_Retino_dzfqcj.png" alt="Diabetic Retinopathy Figma Diagram" loading="lazy" class="w-full h-80 object-cover rounded-3xl transition-transform duration-700 group-hover:scale-105">
+                </div>
+                <div class="lg:w-7/12">
+                    <div class="text-xs text-orange-400 font-medium mb-3">AI/ML PIPELINE</div>
+                    <h3 class="font-semibold text-3xl text-white">Diabetic Retinopathy Detection using Deep Learning</h3>
+                    <p class="text-zinc-400 mt-6 leading-relaxed">The Figma diagram (left) depicts the ML pipeline: image input → preprocessing → DenseNet inference → 5-class severity output with 98% accuracy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- CONTACT - Simple Gmail Link -->
+    <section id="contact" class="bg-black py-24">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-8 text-center">
+            <h2 class="heading-font text-5xl mb-6">Let's Build Something Great Together</h2>
+            <p class="text-zinc-400 mb-10">Have a project in mind? Feel free to reach out.</p>
+            
+            <a href="mailto:jetychodipilli@gmail.com" 
+               class="inline-flex items-center gap-4 px-10 py-5 bg-orange-500 hover:bg-orange-600 rounded-3xl text-xl font-semibold transition-all">
+                <i class="fa-solid fa-envelope"></i>
+                jetychodipilli@gmail.com
+            </a>
+        </div>
+    </section>
+
+
+    <footer class="bg-zinc-950 py-12 border-t border-white/10">
+        <div class="max-w-screen-2xl mx-auto px-8 text-center text-zinc-500 text-sm">
+            © 2026 Jety Chodipilli • Built with passion in Hyderabad, India
+        </div>
+    </footer>
+
+    <script>
+        function navigateToSection(sectionId) {
+            const el = document.getElementById(sectionId);
+            if (el) {
+                const offset = 90;
+                const topPos = el.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top: topPos, behavior: 'smooth' });
+
+                document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    if (link.getAttribute('onclick').includes(sectionId)) link.classList.add('active');
+                });
+            }
+        }
+
+        function animateExperience() {
+            const card = document.querySelector('.experience-card');
+            if (card) {
+                const rect = card.getBoundingClientRect();
+                if (rect.top <= window.innerHeight * 0.85) {
+                    card.classList.add('visible');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', animateExperience);
+        window.addEventListener('load', () => {
+            document.querySelector('.nav-link').classList.add('active');
+            animateExperience();
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert("Thank you! Your message has been received. I'll get back to you soon.");
+            this.reset();
+        });
+    </script>
+</body>
+</html>
