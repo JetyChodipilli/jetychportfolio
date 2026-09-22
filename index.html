@@ -208,7 +208,29 @@
                 <h2 class="heading-font text-5xl mt-4">Professional Journey</h2>
             </div>
 
-            <div class="max-w-3xl mx-auto">
+            <div class="max-w-3xl mx-auto space-y-8">
+                <div class="experience-card bg-zinc-50 border border-zinc-100 rounded-3xl p-10 shadow-sm">
+                    <div class="flex flex-col md:flex-row justify-between items-start gap-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center text-3xl">💼</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-zinc-900">Jr. Java Developer</h3>
+                                <p class="text-orange-600 font-medium">Brainserve Groups Pvt Limited</p>
+                            </div>
+                        </div>
+                        <div class="text-sm text-zinc-500 font-medium">Jan 2026 – Present</div>
+                    </div>
+
+                    <p class="mt-8 text-zinc-700 italic">"Building and validating reliable workflows for a multi-module career-development platform."</p>
+
+                    <ul class="mt-10 space-y-5 text-zinc-700">
+                        <li class="flex gap-4"><span class="text-emerald-500 mt-1">✔</span> Working on OYS (Operational Yuva Sankalp), a platform that provides career guidance for students</li>
+                        <li class="flex gap-4"><span class="text-emerald-500 mt-1">✔</span> Performed functional and UAT testing across Admin Panel, E-Preparation, E-Library, Career Counselling, Resume Builder, and Alerts Hub</li>
+                        <li class="flex gap-4"><span class="text-emerald-500 mt-1">✔</span> Validated role-based access, content updates, assessment delivery, and notification workflows across Chrome, Firefox, and Edge</li>
+                        <li class="flex gap-4"><span class="text-emerald-500 mt-1">✔</span> Logged, tracked, and verified functional, UI, and cross-browser defects against requirements and acceptance criteria</li>
+                    </ul>
+                </div>
+
                 <div class="experience-card bg-zinc-50 border border-zinc-100 rounded-3xl p-10 shadow-sm">
                     <div class="flex flex-col md:flex-row justify-between items-start gap-6">
                         <div class="flex items-center gap-4">
@@ -247,6 +269,49 @@
             </div>
 
             <div id="projectScroll" class="horizontal-scroll flex gap-6 md:gap-8 overflow-x-auto pb-12 snap-x snap-mandatory scroll-smooth">
+                <!-- BrainServe Connect -->
+                <div class="project-card min-w-[90vw] md:min-w-[440px] bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden group snap-center">
+                    <div class="w-full h-64 bg-gradient-to-br from-zinc-800 via-zinc-900 to-orange-950 flex items-center justify-center overflow-hidden">
+                        <div class="text-center transition-transform duration-700 group-hover:scale-105">
+                            <div class="text-7xl mb-4">🏢</div>
+                            <p class="heading-font text-xl text-white">Enterprise Visitor & Workforce Management</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="text-5xl mb-4">🔐</div>
+                        <h3 class="heading-font text-2xl font-medium text-white">BrainServe Connect</h3>
+                        <p class="text-zinc-400 mt-3">A full-stack enterprise platform for visitor management, employee operations, departmental workflows, approvals, and internal communication.</p>
+
+                        <div class="mt-6">
+                            <p class="font-medium text-white mb-2">Core Capabilities:</p>
+                            <ul class="text-sm text-zinc-400 space-y-1">
+                                <li>• Seven-role RBAC with secure, role-specific dashboards and approval workflows</li>
+                                <li>• End-to-end visitor flow from security intake to QR pass, check-in, and completion</li>
+                                <li>• Employee onboarding, Team Lead assignment, task tracking, HR insights, and CEO audit approval</li>
+                                <li>• Kafka-based internal calls and workflow notifications with PostgreSQL, Redis, and Flyway</li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-6">
+                            <p class="font-medium text-white mb-2">Tech Stack:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">Java 21</span>
+                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">Spring Boot 3</span>
+                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">Spring Security</span>
+                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">React + TypeScript</span>
+                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">PostgreSQL</span>
+                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">Kafka</span>
+                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">Redis</span>
+                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">Docker</span>
+                            </div>
+                        </div>
+
+                        <span class="mt-8 inline-flex items-center gap-3 text-sm font-medium text-zinc-400">
+                            <i class="fa-solid fa-lock"></i> Private enterprise repository
+                        </span>
+                    </div>
+                </div>
+
                 <!-- 1. Healthcare Patient Management System -->
                 <div class="project-card min-w-[90vw] md:min-w-[440px] bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden group snap-center">
                     <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774878074/Healthcare_mangement_architure_bgguda.png" alt="Healthcare Patient Management System" loading="lazy" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105">
@@ -436,13 +501,12 @@
         }
 
         function animateExperience() {
-            const card = document.querySelector('.experience-card');
-            if (card) {
+            document.querySelectorAll('.experience-card').forEach(card => {
                 const rect = card.getBoundingClientRect();
                 if (rect.top <= window.innerHeight * 0.85) {
                     card.classList.add('visible');
                 }
-            }
+            });
         }
 
         window.addEventListener('scroll', animateExperience);
