@@ -62,7 +62,7 @@ A full-stack enterprise platform for visitor management, employee operations, de
 
 **Tech Stack**: Java 21, Spring Boot 3, Spring Security, Spring Data JPA, React, TypeScript, PostgreSQL, Apache Kafka, Redis, Flyway, Maven, Docker, REST APIs
 
-*Private enterprise repository*
+[Live Demo →](https://brain-serve-connect-vercel-demo.vercel.app/)\n\n*Private enterprise repository*
 
 ---
 
