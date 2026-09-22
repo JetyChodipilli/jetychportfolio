@@ -9,7 +9,31 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
 
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
         .heading-font { font-family: 'Space Grotesk', sans-serif; }
+
+        .mobile-menu {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, opacity 0.25s ease;
+        }
+        .mobile-menu.open {
+            max-height: 520px;
+            opacity: 1;
+        }
+
+        @media (max-width: 767px) {
+            .card-hover:hover,
+            .project-card:hover,
+            .blog-card:hover {
+                transform: none;
+            }
+        }
 
         .hero-bg {
             background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
@@ -74,16 +98,16 @@
 
     <!-- HEADER -->
     <header class="glass sticky top-0 z-50 border-b border-white/10">
-        <div class="max-w-screen-2xl mx-auto px-6 md:px-8 py-5 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-amber-600 rounded-2xl flex items-center justify-center text-white text-2xl font-bold shadow-inner">JC</div>
-                <div>
-                    <h1 class="heading-font text-2xl tracking-tight">Jety Chodipilli</h1>
-                    <p class="text-xs text-zinc-400 -mt-1">Java Spring Boot Engineer</p>
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex justify-between items-center gap-4">
+            <button onclick="navigateToSection('hero')" class="flex items-center gap-3 min-w-0 text-left">
+                <div class="w-9 h-9 sm:w-10 sm:h-10 shrink-0 bg-gradient-to-br from-orange-500 to-amber-600 rounded-xl sm:rounded-2xl flex items-center justify-center text-white text-lg sm:text-2xl font-bold shadow-inner">JC</div>
+                <div class="min-w-0">
+                    <h1 class="heading-font text-base sm:text-xl md:text-2xl tracking-tight truncate">Jety Chodipilli</h1>
+                    <p class="hidden sm:block text-[11px] md:text-xs text-zinc-400 -mt-0.5 truncate">Java Spring Boot Engineer</p>
                 </div>
-            </div>
+            </button>
 
-            <nav class="hidden md:flex items-center gap-9 text-sm font-medium">
+            <nav class="hidden xl:flex items-center gap-6 2xl:gap-8 text-sm font-medium">
                 <a onclick="navigateToSection('hero')" class="nav-link active">Home</a>
                 <a onclick="navigateToSection('about')" class="nav-link">About</a>
                 <a onclick="navigateToSection('skills')" class="nav-link">Skills</a>
@@ -93,45 +117,70 @@
                 <a onclick="navigateToSection('contact')" class="nav-link">Contact</a>
             </nav>
 
-            <div class="flex items-center gap-4">
-                <a href="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774876198/Jety_Chodipilli_efjtox.pdf" target="_blank" class="flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 rounded-3xl text-sm font-semibold transition-all">
-                    <i class="fa-solid fa-download"></i> Resume
-                </a>
-                <a href="https://github.com/JetyChodipilli" target="_blank" class="w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-2xl text-2xl transition-all"><i class="fa-brands fa-github"></i></a>
-                <a href="https://linkedin.com/in/jety-chodipilli" target="_blank" class="w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-2xl text-2xl transition-all"><i class="fa-brands fa-linkedin"></i></a>
-                <button onclick="navigateToSection('contact')" class="px-7 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-3xl transition-all">Work With Me</button>
+            <div class="flex items-center gap-2 sm:gap-3">
+                <div class="hidden lg:flex items-center gap-2 2xl:gap-3">
+                    <a href="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774876198/Jety_Chodipilli_efjtox.pdf" target="_blank" class="flex items-center gap-2 px-4 py-2.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-2xl text-sm font-semibold transition-all">
+                        <i class="fa-solid fa-download"></i> Resume
+                    </a>
+                    <a href="https://github.com/JetyChodipilli" target="_blank" aria-label="GitHub" class="w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-xl text-xl transition-all"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://linkedin.com/in/jety-chodipilli" target="_blank" aria-label="LinkedIn" class="w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-xl text-xl transition-all"><i class="fa-brands fa-linkedin"></i></a>
+                    <button onclick="navigateToSection('contact')" class="hidden 2xl:inline-flex px-5 py-2.5 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-2xl transition-all">Work With Me</button>
+                </div>
+
+                <button id="mobileMenuButton" onclick="toggleMobileMenu()" aria-label="Open navigation menu" aria-expanded="false" class="xl:hidden w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-xl border border-white/15 bg-white/10 hover:bg-white/15 transition-all">
+                    <i id="mobileMenuIcon" class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="mobile-menu xl:hidden border-t border-white/10 bg-zinc-950/95 backdrop-blur-xl">
+            <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 py-4">
+                <nav class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-sm font-medium">
+                    <button onclick="mobileNavigate('hero')" class="text-left px-4 py-3 rounded-xl hover:bg-white/10">Home</button>
+                    <button onclick="mobileNavigate('about')" class="text-left px-4 py-3 rounded-xl hover:bg-white/10">About</button>
+                    <button onclick="mobileNavigate('skills')" class="text-left px-4 py-3 rounded-xl hover:bg-white/10">Skills</button>
+                    <button onclick="mobileNavigate('experience')" class="text-left px-4 py-3 rounded-xl hover:bg-white/10">Experience</button>
+                    <button onclick="mobileNavigate('projects')" class="text-left px-4 py-3 rounded-xl hover:bg-white/10">Projects</button>
+                    <button onclick="mobileNavigate('blog')" class="text-left px-4 py-3 rounded-xl hover:bg-white/10">Blog</button>
+                    <button onclick="mobileNavigate('contact')" class="text-left px-4 py-3 rounded-xl hover:bg-white/10">Contact</button>
+                    <a href="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774876198/Jety_Chodipilli_efjtox.pdf" target="_blank" class="px-4 py-3 rounded-xl hover:bg-white/10"><i class="fa-solid fa-download mr-2"></i>Resume</a>
+                </nav>
+                <div class="mt-3 flex gap-3">
+                    <a href="https://github.com/JetyChodipilli" target="_blank" class="flex-1 px-4 py-3 text-center rounded-xl bg-white/10"><i class="fa-brands fa-github mr-2"></i>GitHub</a>
+                    <a href="https://linkedin.com/in/jety-chodipilli" target="_blank" class="flex-1 px-4 py-3 text-center rounded-xl bg-white/10"><i class="fa-brands fa-linkedin mr-2"></i>LinkedIn</a>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- HERO -->
-    <section id="hero" class="hero-bg min-h-screen flex items-center relative overflow-hidden">
-        <div class="max-w-screen-2xl mx-auto px-6 md:px-8 grid md:grid-cols-12 gap-12 items-center relative z-10">
+    <section id="hero" class="hero-bg min-h-[calc(100vh-68px)] flex items-center relative overflow-hidden py-14 sm:py-18 md:py-24">
+        <div class="max-w-screen-2xl mx-auto px-5 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-10 lg:gap-14 items-center relative z-10">
             <div class="md:col-span-7">
-                <h1 class="heading-font text-6xl md:text-7xl leading-tight tracking-tighter mb-6">
+                <h1 class="heading-font text-4xl sm:text-5xl md:text-6xl xl:text-7xl leading-[1.06] md:leading-tight tracking-tighter mb-5 sm:mb-6">
                     Building Backend Systems That Actually Work — On Time, Every Time.
                 </h1>
-                <p class="text-xl text-zinc-300 max-w-xl">Java Backend Developer working with Spring Boot, Kafka, PostgreSQL, Redis, Docker, and secure workflow-driven systems.</p>
-                <div class="mt-10 flex flex-wrap gap-4">
-                    <button onclick="navigateToSection('projects')" class="px-8 py-4 bg-white text-zinc-900 hover:bg-amber-100 font-semibold rounded-3xl flex items-center gap-3 transition-all">View My Work <i class="fa-solid fa-arrow-down"></i></button>
-                    <a href="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774876198/Jety_Chodipilli_efjtox.pdf" target="_blank" class="px-8 py-4 border border-white/50 hover:border-white font-semibold rounded-3xl flex items-center gap-3 transition-all"><i class="fa-solid fa-download"></i> Resume</a>
+                <p class="text-base sm:text-lg md:text-xl leading-relaxed text-zinc-300 max-w-2xl">Java Backend Developer working with Spring Boot, Kafka, PostgreSQL, Redis, Docker, and secure workflow-driven systems.</p>
+                <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+                    <button onclick="navigateToSection('projects')" class="w-full sm:w-auto justify-center px-7 sm:px-8 py-3.5 sm:py-4 bg-white text-zinc-900 hover:bg-amber-100 font-semibold rounded-2xl sm:rounded-3xl flex items-center gap-3 transition-all">View My Work <i class="fa-solid fa-arrow-down"></i></button>
+                    <a href="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774876198/Jety_Chodipilli_efjtox.pdf" target="_blank" class="w-full sm:w-auto justify-center px-7 sm:px-8 py-3.5 sm:py-4 border border-white/50 hover:border-white font-semibold rounded-2xl sm:rounded-3xl flex items-center gap-3 transition-all"><i class="fa-solid fa-download"></i> Resume</a>
                 </div>
             </div>
             <div class="md:col-span-5">
-                <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774869278/IMG_20260330_164201_qdj4z0.png" alt="Jety Chodipilli" loading="lazy" class="rounded-3xl shadow-2xl w-full aspect-square object-cover border-8 border-white/30">
+                <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774869278/IMG_20260330_164201_qdj4z0.png" alt="Jety Chodipilli" loading="lazy" class="rounded-2xl sm:rounded-3xl shadow-2xl w-full max-w-sm sm:max-w-md md:max-w-none mx-auto aspect-square object-cover border-4 sm:border-8 border-white/30">
             </div>
         </div>
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="max-w-screen-2xl mx-auto px-6 md:px-8 py-24 bg-white">
-        <div class="grid md:grid-cols-12 gap-16 items-center">
+    <section id="about" class="max-w-screen-2xl mx-auto px-5 sm:px-6 lg:px-8 py-16 md:py-24 bg-white">
+        <div class="grid md:grid-cols-12 gap-10 lg:gap-16 items-center">
             <div class="md:col-span-5">
-                <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774869278/IMG_20260330_164201_qdj4z0.png" alt="Jety Chodipilli" class="rounded-3xl shadow-xl w-full">
+                <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774869278/IMG_20260330_164201_qdj4z0.png" alt="Jety Chodipilli" class="rounded-2xl sm:rounded-3xl shadow-xl w-full max-w-sm sm:max-w-md md:max-w-none mx-auto">
             </div>
             <div class="md:col-span-7">
-                <h2 class="heading-font text-5xl mb-8">Hi, I'm Jety Chodipilli</h2>
-                <div class="text-lg text-zinc-600 space-y-6">
+                <h2 class="heading-font text-3xl sm:text-4xl md:text-5xl mb-5 sm:mb-8 text-zinc-900">Hi, I'm Jety Chodipilli</h2>
+                <div class="text-base sm:text-lg leading-relaxed text-zinc-600 space-y-4 sm:space-y-6">
                     <p>I'm a Java Backend Developer working with Spring Boot, Spring Security, Kafka, PostgreSQL, Redis, Docker, and REST APIs.</p>
                     <p>At Brainserve Groups, I work on OYS and BrainServe Connect, dealing with role-based workflows, approvals, notifications, audit trails, testing, and release validation.</p>
                     <p>I also built a five-service healthcare microservices system using Spring Cloud Gateway, JWT, Kafka, gRPC, Protocol Buffers, PostgreSQL, and Docker. I enjoy understanding how systems behave end to end and writing backend code that is easier to secure, debug, test, and maintain.</p>
@@ -141,21 +190,21 @@
     </section>
 
     <!-- SKILLS - Full List -->
-    <section id="skills" class="py-24 bg-zinc-950">
-        <div class="max-w-screen-2xl mx-auto px-6 md:px-8">
+    <section id="skills" class="py-16 md:py-24 bg-zinc-950">
+        <div class="max-w-screen-2xl mx-auto px-5 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <span class="bg-orange-100 text-orange-600 px-5 py-2 rounded-3xl text-sm font-semibold">EXPERTISE</span>
-                <h2 class="heading-font text-5xl mt-4 text-white">Skills & Technologies</h2>
+                <h2 class="heading-font text-3xl sm:text-4xl md:text-5xl mt-4 text-white">Skills & Technologies</h2>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-3xl p-8 hover:border-orange-500">
+                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-2xl sm:rounded-3xl p-6 md:p-8 hover:border-orange-500 transition-colors">
                     <h3 class="font-semibold text-xl mb-6 flex items-center gap-3 text-white"><i class="fa-solid fa-code text-orange-500"></i> Programming</h3>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">Java (Core, OOPs, Multithreading, Collections, JDBC, Servlets)</span>
                         <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">Python</span>
                     </div>
                 </div>
-                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-3xl p-8 hover:border-orange-500">
+                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-2xl sm:rounded-3xl p-6 md:p-8 hover:border-orange-500 transition-colors">
                     <h3 class="font-semibold text-xl mb-6 flex items-center gap-3 text-white"><i class="fa-solid fa-layer-group text-orange-500"></i> Frameworks</h3>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">Spring Boot • Spring MVC • Spring Security</span>
@@ -163,34 +212,34 @@
                         <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">OAuth 2.0 • Razorpay • PayPal SDKs • JWT</span>
                     </div>
                 </div>
-                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-3xl p-8 hover:border-orange-500">
+                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-2xl sm:rounded-3xl p-6 md:p-8 hover:border-orange-500 transition-colors">
                     <h3 class="font-semibold text-xl mb-6 flex items-center gap-3 text-white"><i class="fa-solid fa-globe text-orange-500"></i> Web Technologies</h3>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">RESTful APIs • WebFlux</span>
                         <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">HTML • CSS • Thymeleaf • JSP • JavaScript</span>
                     </div>
                 </div>
-                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-3xl p-8 hover:border-orange-500">
+                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-2xl sm:rounded-3xl p-6 md:p-8 hover:border-orange-500 transition-colors">
                     <h3 class="font-semibold text-xl mb-6 flex items-center gap-3 text-white"><i class="fa-solid fa-database text-orange-500"></i> Databases</h3>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">MySQL • Oracle • MongoDB • PostgreSQL</span>
                     </div>
                 </div>
-                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-3xl p-8 hover:border-orange-500">
+                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-2xl sm:rounded-3xl p-6 md:p-8 hover:border-orange-500 transition-colors">
                     <h3 class="font-semibold text-xl mb-6 flex items-center gap-3 text-white"><i class="fa-solid fa-cloud text-orange-500"></i> Cloud & Deployment</h3>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">AWS (EC2) • Docker (CI/CD) • GitHub/GitLab</span>
                         <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">JUnit/Mockito • Agile/SDLC</span>
                     </div>
                 </div>
-                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-3xl p-8 hover:border-orange-500">
+                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-2xl sm:rounded-3xl p-6 md:p-8 hover:border-orange-500 transition-colors">
                     <h3 class="font-semibold text-xl mb-6 flex items-center gap-3 text-white"><i class="fa-solid fa-message text-orange-500"></i> Messaging & Architecture</h3>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">Apache Kafka • Microservices • Event-Driven</span>
                         <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">gRPC + Protobuf • Eureka • API Gateway</span>
                     </div>
                 </div>
-                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-3xl p-8 hover:border-orange-500">
+                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-2xl sm:rounded-3xl p-6 md:p-8 hover:border-orange-500 transition-colors">
                     <h3 class="font-semibold text-xl mb-6 flex items-center gap-3 text-white"><i class="fa-solid fa-tools text-orange-500"></i> Tools</h3>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-sm">Git • Postman • IntelliJ IDEA • Eclipse/STS • MobaXterm</span>
@@ -201,29 +250,29 @@
     </section>
 
     <!-- EXPERIENCE -->
-    <section id="experience" class="py-24 bg-white">
-        <div class="max-w-screen-2xl mx-auto px-6 md:px-8">
+    <section id="experience" class="py-16 md:py-24 bg-white">
+        <div class="max-w-screen-2xl mx-auto px-5 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <span class="bg-orange-100 text-orange-600 px-5 py-2 rounded-3xl text-sm font-semibold">EXPERIENCE</span>
-                <h2 class="heading-font text-5xl mt-4">Professional Journey</h2>
+                <h2 class="heading-font text-3xl sm:text-4xl md:text-5xl mt-4 text-zinc-900">Professional Journey</h2>
             </div>
 
             <div class="max-w-3xl mx-auto space-y-8">
-                <div class="experience-card bg-zinc-50 border border-zinc-100 rounded-3xl p-10 shadow-sm">
+                <div class="experience-card bg-zinc-50 border border-zinc-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-sm">
                     <div class="flex flex-col md:flex-row justify-between items-start gap-6">
-                        <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-3 sm:gap-4 min-w-0">
                             <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center text-3xl">💼</div>
                             <div>
-                                <h3 class="text-2xl font-semibold text-zinc-900">Jr. Java Developer</h3>
+                                <h3 class="text-xl sm:text-2xl font-semibold text-zinc-900">Jr. Java Developer</h3>
                                 <p class="text-orange-600 font-medium">Brainserve Groups Pvt Limited</p>
                             </div>
                         </div>
                         <div class="text-sm text-zinc-500 font-medium">Jan 2026 – Present</div>
                     </div>
 
-                    <p class="mt-8 text-zinc-700 italic">"Building and validating reliable workflows for a multi-module career-development platform."</p>
+                    <p class="mt-6 sm:mt-8 text-sm sm:text-base text-zinc-700 italic leading-relaxed">"Building and validating reliable workflows for a multi-module career-development platform."</p>
 
-                    <ul class="mt-10 space-y-5 text-zinc-700">
+                    <ul class="mt-7 sm:mt-10 space-y-4 sm:space-y-5 text-sm sm:text-base text-zinc-700 leading-relaxed">
                         <li class="flex gap-4"><span class="text-emerald-500 mt-1">✔</span> Working on OYS (Operational Yuva Sankalp), a platform that provides career guidance for students</li>
                         <li class="flex gap-4"><span class="text-emerald-500 mt-1">✔</span> Performed functional and UAT testing across Admin Panel, E-Preparation, E-Library, Career Counselling, Resume Builder, and Alerts Hub</li>
                         <li class="flex gap-4"><span class="text-emerald-500 mt-1">✔</span> Validated role-based access, content updates, assessment delivery, and notification workflows across Chrome, Firefox, and Edge</li>
@@ -231,21 +280,21 @@
                     </ul>
                 </div>
 
-                <div class="experience-card bg-zinc-50 border border-zinc-100 rounded-3xl p-10 shadow-sm">
+                <div class="experience-card bg-zinc-50 border border-zinc-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-sm">
                     <div class="flex flex-col md:flex-row justify-between items-start gap-6">
-                        <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-3 sm:gap-4 min-w-0">
                             <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center text-3xl">💼</div>
                             <div>
-                                <h3 class="text-2xl font-semibold text-zinc-900">Java Backend Developer Intern</h3>
+                                <h3 class="text-xl sm:text-2xl font-semibold text-zinc-900">Java Backend Developer Intern</h3>
                                 <p class="text-orange-600 font-medium">Quick Bitz Tech, Bangalore</p>
                             </div>
                         </div>
                         <div class="text-sm text-zinc-500 font-medium">May 2025 – Sep 2025</div>
                     </div>
 
-                    <p class="mt-8 text-zinc-700 italic">"Real-world backend engineering — from microservices to cloud integrations, shipped in production."</p>
+                    <p class="mt-6 sm:mt-8 text-sm sm:text-base text-zinc-700 italic leading-relaxed">"Real-world backend engineering — from microservices to cloud integrations, shipped in production."</p>
 
-                    <ul class="mt-10 space-y-5 text-zinc-700">
+                    <ul class="mt-7 sm:mt-10 space-y-4 sm:space-y-5 text-sm sm:text-base text-zinc-700 leading-relaxed">
                         <li class="flex gap-4"><span class="text-emerald-500 mt-1">✔</span> Built scalable microservices using Java Spring Boot and event-driven architecture with Apache Kafka</li>
                         <li class="flex gap-4"><span class="text-emerald-500 mt-1">✔</span> Integrated AWS SES for transactional emails and AWS RDS PostgreSQL for data persistence</li>
                         <li class="flex gap-4"><span class="text-emerald-500 mt-1">✔</span> Contributed to CI/CD pipelines and implemented role-based access control using Spring Security</li>
@@ -261,20 +310,20 @@
     </section>
 
     <!-- PROJECTS - Horizontal Scroll with Detailed Descriptions -->
-    <section id="projects" class="py-24 bg-zinc-950">
-        <div class="max-w-screen-2xl mx-auto px-6 md:px-8">
+    <section id="projects" class="py-16 md:py-24 bg-zinc-950">
+        <div class="max-w-screen-2xl mx-auto px-5 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <span class="bg-orange-100 text-orange-600 px-5 py-2 rounded-3xl text-sm font-semibold">SELECTED WORK</span>
-                <h2 class="heading-font text-5xl mt-4 text-white">Featured Projects</h2>
+                <h2 class="heading-font text-3xl sm:text-4xl md:text-5xl mt-4 text-white">Featured Projects</h2>
             </div>
 
-            <div id="projectScroll" class="horizontal-scroll flex gap-6 md:gap-8 overflow-x-auto pb-12 snap-x snap-mandatory scroll-smooth">
+            <div id="projectScroll" class="horizontal-scroll flex gap-4 sm:gap-6 md:gap-8 overflow-x-auto pb-8 md:pb-12 snap-x snap-mandatory scroll-smooth -mx-1 px-1">
                 <!-- BrainServe Connect -->
-                <div class="project-card min-w-[90vw] md:min-w-[440px] bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden group snap-center">
-                    <div class="w-full h-64 bg-zinc-950 overflow-hidden flex items-center justify-center">
+                <div class="project-card min-w-[calc(100vw-2.5rem)] sm:min-w-[420px] md:min-w-[440px] bg-zinc-900 border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden group snap-center">
+                    <div class="w-full h-48 sm:h-56 md:h-64 bg-zinc-950 overflow-hidden flex items-center justify-center">
                         <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1790075679/IMG-20260922-WA0000_xdeqee.jpg" alt="BrainServe Connect CEO dashboard demo" loading="lazy" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105">
                     </div>
-                    <div class="p-8">
+                    <div class="p-6 sm:p-8">
                         <div class="text-5xl mb-4">🔐</div>
                         <h3 class="heading-font text-2xl font-medium text-white">BrainServe Connect</h3>
                         <p class="text-zinc-400 mt-3">A full-stack enterprise platform for visitor management, employee operations, departmental workflows, approvals, and internal communication.</p>
@@ -315,9 +364,9 @@
                 </div>
 
                 <!-- 1. Healthcare Patient Management System -->
-                <div class="project-card min-w-[90vw] md:min-w-[440px] bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden group snap-center">
-                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774878074/Healthcare_mangement_architure_bgguda.png" alt="Healthcare Patient Management System" loading="lazy" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="p-8">
+                <div class="project-card min-w-[calc(100vw-2.5rem)] sm:min-w-[420px] md:min-w-[440px] bg-zinc-900 border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden group snap-center">
+                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774878074/Healthcare_mangement_architure_bgguda.png" alt="Healthcare Patient Management System" loading="lazy" class="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="p-6 sm:p-8">
                         <div class="text-5xl mb-4">🏥</div>
                         <h3 class="heading-font text-2xl font-medium text-white">Healthcare Patient Management System</h3>
                         <p class="text-zinc-400 mt-3">A distributed microservices system designed to manage patient data, authentication, billing, and analytics for a healthcare application.</p>
@@ -353,9 +402,9 @@
                 </div>
 
                 <!-- 2. Payment Processing Microservice -->
-                <div class="project-card min-w-[90vw] md:min-w-[440px] bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden group snap-center">
-                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774878074/payment_processing_microservice_iomhqu.png" alt="Payment Processing Microservice" loading="lazy" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="p-8">
+                <div class="project-card min-w-[calc(100vw-2.5rem)] sm:min-w-[420px] md:min-w-[440px] bg-zinc-900 border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden group snap-center">
+                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774878074/payment_processing_microservice_iomhqu.png" alt="Payment Processing Microservice" loading="lazy" class="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="p-6 sm:p-8">
                         <div class="text-5xl mb-4">💳</div>
                         <h3 class="heading-font text-2xl font-medium text-white">Payment Processing Microservice</h3>
                         <p class="text-zinc-400 mt-3">Secure payment processing microservice integrated with Stripe and MySQL for full transaction tracking.</p>
@@ -387,9 +436,9 @@
                 </div>
 
                 <!-- 3. Diabetic Retinopathy Detection -->
-                <div class="project-card min-w-[90vw] md:min-w-[440px] bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden group snap-center">
-                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774878074/diabetic_Retinopathy_architure_biwgvm.png" alt="Diabetic Retinopathy Detection" loading="lazy" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="p-8">
+                <div class="project-card min-w-[calc(100vw-2.5rem)] sm:min-w-[420px] md:min-w-[440px] bg-zinc-900 border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden group snap-center">
+                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774878074/diabetic_Retinopathy_architure_biwgvm.png" alt="Diabetic Retinopathy Detection" loading="lazy" class="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="p-6 sm:p-8">
                         <div class="text-5xl mb-4">🧠</div>
                         <h3 class="heading-font text-2xl font-medium text-white">Diabetic Retinopathy Detection</h3>
                         <p class="text-zinc-400 mt-3">Deep learning system for classifying diabetic retinopathy stages from retinal fundus images.</p>
@@ -424,56 +473,56 @@
     </section>
 
     <!-- BLOG -->
-    <section id="blog" class="max-w-screen-2xl mx-auto px-6 md:px-8 py-24 bg-zinc-900">
+    <section id="blog" class="max-w-screen-2xl mx-auto px-5 sm:px-6 lg:px-8 py-16 md:py-24 bg-zinc-900">
         <div class="text-center mb-12">
             <span class="bg-orange-100 text-orange-600 px-5 py-2 rounded-3xl text-sm font-semibold">TECH INSIGHTS</span>
-            <h2 class="heading-font text-5xl mt-4 text-white">Blog & Articles</h2>
+            <h2 class="heading-font text-3xl sm:text-4xl md:text-5xl mt-4 text-white">Blog & Articles</h2>
         </div>
 
-        <div class="space-y-24">
-            <div class="blog-card flex flex-col lg:flex-row gap-12 items-center bg-zinc-800/70 backdrop-blur rounded-3xl border border-white/10 hover:border-orange-500 group">
+        <div class="space-y-10 md:space-y-16 lg:space-y-24">
+            <div class="blog-card flex flex-col lg:flex-row gap-6 md:gap-10 lg:gap-12 items-center bg-zinc-800/70 backdrop-blur rounded-2xl sm:rounded-3xl border border-white/10 hover:border-orange-500 group p-4 sm:p-6 md:p-8">
                 <div class="lg:w-5/12">
-                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774877528/healhcare_management_ym7doc.png" alt="Healthcare Microservices Figma Diagram" loading="lazy" class="w-full h-80 object-cover rounded-3xl transition-transform duration-700 group-hover:scale-105">
+                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774877528/healhcare_management_ym7doc.png" alt="Healthcare Microservices Figma Diagram" loading="lazy" class="w-full h-52 sm:h-64 lg:h-80 object-cover rounded-xl sm:rounded-2xl transition-transform duration-700 group-hover:scale-105">
                 </div>
                 <div class="lg:w-7/12">
                     <div class="text-xs text-orange-400 font-medium mb-3">MICROSERVICES ARCHITECTURE</div>
-                    <h3 class="font-semibold text-3xl text-white">Building Resilient Microservices with Kafka & Spring Cloud</h3>
-                    <p class="text-zinc-400 mt-6 leading-relaxed">The Figma diagram (left) shows the complete architecture: Spring Cloud Gateway as entry point, multiple backend services, Apache Kafka for asynchronous events, and gRPC for high-performance inter-service communication.</p>
+                    <h3 class="font-semibold text-2xl sm:text-3xl text-white leading-tight">Building Resilient Microservices with Kafka & Spring Cloud</h3>
+                    <p class="text-zinc-400 mt-4 sm:mt-6 leading-relaxed">The Figma diagram (left) shows the complete architecture: Spring Cloud Gateway as entry point, multiple backend services, Apache Kafka for asynchronous events, and gRPC for high-performance inter-service communication.</p>
                 </div>
             </div>
 
-            <div class="blog-card flex flex-col lg:flex-row-reverse gap-12 items-center bg-zinc-800/70 backdrop-blur rounded-3xl border border-white/10 hover:border-orange-500 group">
+            <div class="blog-card flex flex-col lg:flex-row-reverse gap-6 md:gap-10 lg:gap-12 items-center bg-zinc-800/70 backdrop-blur rounded-2xl sm:rounded-3xl border border-white/10 hover:border-orange-500 group p-4 sm:p-6 md:p-8">
                 <div class="lg:w-5/12">
-                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774877528/payment_service_wlhtdi.png" alt="Payment Processing Figma Diagram" loading="lazy" class="w-full h-80 object-cover rounded-3xl transition-transform duration-700 group-hover:scale-105">
+                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774877528/payment_service_wlhtdi.png" alt="Payment Processing Figma Diagram" loading="lazy" class="w-full h-52 sm:h-64 lg:h-80 object-cover rounded-xl sm:rounded-2xl transition-transform duration-700 group-hover:scale-105">
                 </div>
                 <div class="lg:w-7/12">
                     <div class="text-xs text-orange-400 font-medium mb-3">PAYMENT FLOW</div>
-                    <h3 class="font-semibold text-3xl text-white">Secure Payment Processing with Stripe in Spring Boot</h3>
-                    <p class="text-zinc-400 mt-6 leading-relaxed">The Figma diagram (right) illustrates the full payment journey: request → Spring Boot microservice → Stripe processing → MySQL audit trail with webhook support.</p>
+                    <h3 class="font-semibold text-2xl sm:text-3xl text-white leading-tight">Secure Payment Processing with Stripe in Spring Boot</h3>
+                    <p class="text-zinc-400 mt-4 sm:mt-6 leading-relaxed">The Figma diagram (right) illustrates the full payment journey: request → Spring Boot microservice → Stripe processing → MySQL audit trail with webhook support.</p>
                 </div>
             </div>
 
-            <div class="blog-card flex flex-col lg:flex-row gap-12 items-center bg-zinc-800/70 backdrop-blur rounded-3xl border border-white/10 hover:border-orange-500 group">
+            <div class="blog-card flex flex-col lg:flex-row gap-6 md:gap-10 lg:gap-12 items-center bg-zinc-800/70 backdrop-blur rounded-2xl sm:rounded-3xl border border-white/10 hover:border-orange-500 group p-4 sm:p-6 md:p-8">
                 <div class="lg:w-5/12">
-                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774877528/diabatic_Retino_dzfqcj.png" alt="Diabetic Retinopathy Figma Diagram" loading="lazy" class="w-full h-80 object-cover rounded-3xl transition-transform duration-700 group-hover:scale-105">
+                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774877528/diabatic_Retino_dzfqcj.png" alt="Diabetic Retinopathy Figma Diagram" loading="lazy" class="w-full h-52 sm:h-64 lg:h-80 object-cover rounded-xl sm:rounded-2xl transition-transform duration-700 group-hover:scale-105">
                 </div>
                 <div class="lg:w-7/12">
                     <div class="text-xs text-orange-400 font-medium mb-3">AI/ML PIPELINE</div>
-                    <h3 class="font-semibold text-3xl text-white">Diabetic Retinopathy Detection using Deep Learning</h3>
-                    <p class="text-zinc-400 mt-6 leading-relaxed">The Figma diagram (left) depicts the ML pipeline: image input → preprocessing → DenseNet inference → 5-class severity output with 98% accuracy.</p>
+                    <h3 class="font-semibold text-2xl sm:text-3xl text-white leading-tight">Diabetic Retinopathy Detection using Deep Learning</h3>
+                    <p class="text-zinc-400 mt-4 sm:mt-6 leading-relaxed">The Figma diagram (left) depicts the ML pipeline: image input → preprocessing → DenseNet inference → 5-class severity output with 98% accuracy.</p>
                 </div>
             </div>
         </div>
     </section>
 
    <!-- CONTACT - Simple Gmail Link -->
-    <section id="contact" class="bg-black py-24">
-        <div class="max-w-screen-2xl mx-auto px-6 md:px-8 text-center">
-            <h2 class="heading-font text-5xl mb-6">Let's Build Something Great Together</h2>
+    <section id="contact" class="bg-black py-16 md:py-24">
+        <div class="max-w-screen-2xl mx-auto px-5 sm:px-6 lg:px-8 text-center">
+            <h2 class="heading-font text-3xl sm:text-4xl md:text-5xl mb-5 sm:mb-6">Let's Build Something Great Together</h2>
             <p class="text-zinc-400 mb-10">Have a project in mind? Feel free to reach out.</p>
             
             <a href="mailto:jetychodipilli@gmail.com" 
-               class="inline-flex items-center gap-4 px-10 py-5 bg-orange-500 hover:bg-orange-600 rounded-3xl text-xl font-semibold transition-all">
+               class="inline-flex max-w-full items-center justify-center gap-3 px-5 sm:px-8 md:px-10 py-4 sm:py-5 bg-orange-500 hover:bg-orange-600 rounded-2xl sm:rounded-3xl text-sm sm:text-base md:text-xl font-semibold transition-all break-all sm:break-normal">
                 <i class="fa-solid fa-envelope"></i>
                 jetychodipilli@gmail.com
             </a>
@@ -482,7 +531,7 @@
 
 
     <footer class="bg-zinc-950 py-12 border-t border-white/10">
-        <div class="max-w-screen-2xl mx-auto px-8 text-center text-zinc-500 text-sm">
+        <div class="max-w-screen-2xl mx-auto px-5 sm:px-8 text-center text-zinc-500 text-xs sm:text-sm">
             © 2026 Jety Chodipilli • Built with passion in Hyderabad, India
         </div>
     </footer>
@@ -490,38 +539,65 @@
     <script>
         function navigateToSection(sectionId) {
             const el = document.getElementById(sectionId);
-            if (el) {
-                const offset = 90;
-                const topPos = el.getBoundingClientRect().top + window.scrollY - offset;
-                window.scrollTo({ top: topPos, behavior: 'smooth' });
+            if (!el) return;
 
-                document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    if (link.getAttribute('onclick').includes(sectionId)) link.classList.add('active');
-                });
-            }
+            const header = document.querySelector('header');
+            const offset = header ? header.offsetHeight + 8 : 80;
+            const topPos = el.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top: topPos, behavior: 'smooth' });
+
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(link => {
+                const action = link.getAttribute('onclick') || '';
+                if (action.includes(sectionId)) link.classList.add('active');
+            });
+        }
+
+        function toggleMobileMenu(forceClose = false) {
+            const menu = document.getElementById('mobileMenu');
+            const button = document.getElementById('mobileMenuButton');
+            const icon = document.getElementById('mobileMenuIcon');
+            if (!menu || !button || !icon) return;
+
+            const shouldOpen = forceClose ? false : !menu.classList.contains('open');
+            menu.classList.toggle('open', shouldOpen);
+            button.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+            icon.className = shouldOpen ? 'fa-solid fa-xmark text-lg' : 'fa-solid fa-bars text-lg';
+        }
+
+        function mobileNavigate(sectionId) {
+            toggleMobileMenu(true);
+            setTimeout(() => navigateToSection(sectionId), 50);
         }
 
         function animateExperience() {
             document.querySelectorAll('.experience-card').forEach(card => {
                 const rect = card.getBoundingClientRect();
-                if (rect.top <= window.innerHeight * 0.85) {
+                if (rect.top <= window.innerHeight * 0.9) {
                     card.classList.add('visible');
                 }
             });
         }
 
-        window.addEventListener('scroll', animateExperience);
+        window.addEventListener('scroll', animateExperience, { passive: true });
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1280) toggleMobileMenu(true);
+        });
+
         window.addEventListener('load', () => {
-            document.querySelector('.nav-link').classList.add('active');
+            const firstNav = document.querySelector('.nav-link');
+            if (firstNav) firstNav.classList.add('active');
             animateExperience();
         });
 
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert("Thank you! Your message has been received. I'll get back to you soon.");
-            this.reset();
-        });
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert("Thank you! Your message has been received. I'll get back to you soon.");
+                this.reset();
+            });
+        }
     </script>
 </body>
 </html>
