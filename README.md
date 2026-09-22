@@ -8,9 +8,11 @@
 
 ## 👨‍💻 About Me
 
-I'm a **Java Spring Boot Engineer** passionate about designing and developing robust, scalable, and maintainable backend systems. I specialize in **microservices architecture**, **event-driven systems**, and **cloud-native applications**.
+I'm a **Java Backend Developer** working mainly with **Spring Boot, Spring Security, PostgreSQL, Kafka, Redis, Docker, and REST APIs**. I like working on the parts of a system where behavior matters most: authentication, approvals, service-to-service communication, notifications, persistence, and failure handling.
 
-With strong expertise in Spring Boot ecosystem, distributed systems, and modern backend practices, I help companies deliver high-quality software solutions efficiently.
+At **Brainserve Groups**, I work on OYS and BrainServe Connect, which has given me hands-on exposure to multi-role workflows, approval chains, QR-based visitor handling, audit trails, notification flows, production builds, and release validation.
+
+I also build backend systems independently to strengthen my architecture skills. My healthcare project is a five-service Spring Boot system using Spring Cloud Gateway, JWT, Kafka, gRPC, Protocol Buffers, PostgreSQL, and Docker, with a focus on clear service boundaries and maintainable communication between services.
 
 ---
 
@@ -62,7 +64,9 @@ A full-stack enterprise platform for visitor management, employee operations, de
 
 **Tech Stack**: Java 21, Spring Boot 3, Spring Security, Spring Data JPA, React, TypeScript, PostgreSQL, Apache Kafka, Redis, Flyway, Maven, Docker, REST APIs
 
-[Live Demo →](https://brain-serve-connect-vercel-demo.vercel.app/)\n\n*Private enterprise repository*
+[Live Demo →](https://brain-serve-connect-vercel-demo.vercel.app/)
+
+*Private enterprise repository*
 
 ---
 
