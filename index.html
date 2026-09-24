@@ -29,9 +29,27 @@
 
         @media (max-width: 767px) {
             .card-hover:hover,
+            .skill-card:hover,
             .project-card:hover,
-            .blog-card:hover {
+            .blog-card:hover,
+            .experience-card:hover,
+            #hero button:hover,
+            #hero a:hover,
+            header a:hover,
+            header button:hover,
+            #contact a:hover {
                 transform: none;
+                box-shadow: none;
+            }
+            .skill-card:hover .skill-icon,
+            .project-card:hover img,
+            .blog-card:hover img {
+                transform: none;
+            }
+            .skill-card:active,
+            .project-card:active,
+            .blog-card:active {
+                transform: scale(0.985);
             }
         }
 
@@ -48,41 +66,78 @@
         .nav-link {
             position: relative;
             cursor: pointer;
+            transition: color 0.22s ease;
         }
-        .nav-link:after {
+        .nav-link::after {
             content: '';
             position: absolute;
-            width: 0;
+            width: 100%;
             height: 2px;
-            bottom: -4px;
+            bottom: -5px;
             left: 0;
-            background-color: #f97316;
-            transition: width 0.3s ease;
+            background: linear-gradient(90deg, #f97316, #fb923c);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.26s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .nav-link:hover:after, .nav-link.active:after { width: 100%; }
+        .nav-link:hover,
+        .nav-link.active {
+            color: #fff7ed;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            transform: scaleX(1);
+        }
 
         .experience-card {
+            position: relative;
+            overflow: hidden;
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(28px);
+            transition:
+                opacity 0.55s ease,
+                transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+        }
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 1.5rem;
+            bottom: 1.5rem;
+            left: 0;
+            width: 3px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, #f97316, #fb923c);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .experience-card.visible {
             opacity: 1;
             transform: translateY(0);
         }
+        .experience-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(249, 115, 22, 0.28);
+            box-shadow: 0 18px 45px rgba(24, 24, 27, 0.10);
+        }
+        .experience-card:hover::before {
+            transform: scaleY(1);
+        }
 
         .card-hover {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease;
         }
         .card-hover:hover {
-            transform: translateY(-12px);
+            transform: translateY(-6px);
         }
 
         .project-img {
-            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .card-hover:hover .project-img {
-            transform: scale(1.08);
+            transform: scale(1.04);
         }
 
         .horizontal-scroll {
@@ -110,6 +165,28 @@
 
         .project-card {
             scroll-snap-stop: always;
+            transition:
+                transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.28s ease,
+                box-shadow 0.28s ease;
+        }
+        .project-card img {
+            transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), filter 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(249, 115, 22, 0.34);
+            box-shadow: 0 22px 55px rgba(0, 0, 0, 0.26);
+        }
+        .project-card:hover img {
+            transform: scale(1.035);
+            filter: saturate(1.04) contrast(1.02);
+        }
+        .project-card a i {
+            transition: transform 0.22s ease;
+        }
+        .project-card a:hover i {
+            transform: translateX(4px);
         }
 
         .skill-card {
@@ -119,7 +196,11 @@
             background:
                 radial-gradient(circle at top right, rgba(249, 115, 22, 0.08), transparent 34%),
                 #18181b;
-            transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+            transition:
+                transform 0.26s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.26s ease,
+                box-shadow 0.26s ease,
+                background-color 0.26s ease;
         }
         .skill-card::before {
             content: '';
@@ -128,12 +209,22 @@
             left: 1.5rem;
             right: 1.5rem;
             height: 2px;
-            background: linear-gradient(90deg, #f97316, transparent);
-            opacity: 0.8;
+            background: linear-gradient(90deg, #f97316, #fb923c 48%, transparent);
+            opacity: 0.68;
+            transform: scaleX(0.72);
+            transform-origin: left;
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
         }
         .skill-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(249, 115, 22, 0.7);
+            transform: translateY(-6px);
+            border-color: rgba(249, 115, 22, 0.72);
+            box-shadow:
+                0 18px 42px rgba(0, 0, 0, 0.25),
+                0 0 0 1px rgba(249, 115, 22, 0.06);
+        }
+        .skill-card:hover::before {
+            transform: scaleX(1);
+            opacity: 1;
         }
         .skill-icon {
             width: 2.75rem;
@@ -146,6 +237,15 @@
             color: #fb923c;
             background: rgba(249, 115, 22, 0.10);
             border: 1px solid rgba(249, 115, 22, 0.18);
+            transition:
+                transform 0.26s cubic-bezier(0.22, 1, 0.36, 1),
+                background-color 0.26s ease,
+                border-color 0.26s ease;
+        }
+        .skill-card:hover .skill-icon {
+            transform: translateY(-2px) scale(1.08);
+            background: rgba(249, 115, 22, 0.16);
+            border-color: rgba(249, 115, 22, 0.34);
         }
         .skill-chip {
             display: inline-flex;
@@ -159,11 +259,77 @@
             font-size: 0.78rem;
             line-height: 1.2;
             white-space: normal;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+        .skill-chip:hover {
+            background: #303034;
+            border-color: rgba(249, 115, 22, 0.24);
+            color: #fff7ed;
         }
         .skill-note {
             color: #a1a1aa;
             font-size: 0.86rem;
             line-height: 1.55;
+        }
+
+        #hero button,
+        #hero a,
+        header a,
+        header button,
+        #contact a,
+        .project-nav-button {
+            transition:
+                transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.2s ease,
+                background-color 0.2s ease,
+                border-color 0.2s ease,
+                color 0.2s ease;
+        }
+        #hero button:hover,
+        #hero a:hover,
+        header a:hover,
+        header button:hover,
+        #contact a:hover,
+        .project-nav-button:not(:disabled):hover {
+            transform: translateY(-2px);
+        }
+        #hero button:active,
+        #hero a:active,
+        header a:active,
+        header button:active,
+        #contact a:active,
+        .project-nav-button:not(:disabled):active {
+            transform: scale(0.98);
+        }
+
+        .blog-card {
+            transition:
+                transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.28s ease,
+                box-shadow 0.28s ease;
+        }
+        .blog-card img {
+            transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.22);
+        }
+        .blog-card:hover img {
+            transform: scale(1.025);
+        }
+
+        .motion-reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition:
+                opacity 0.5s ease,
+                transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            transition-delay: var(--motion-delay, 0ms);
+        }
+        .motion-reveal.motion-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .project-nav-button:disabled {
@@ -198,6 +364,10 @@
                 scroll-behavior: auto !important;
                 transition-duration: 0.01ms !important;
                 animation-duration: 0.01ms !important;
+            }
+            .motion-reveal {
+                opacity: 1 !important;
+                transform: none !important;
             }
         }
     </style>
@@ -526,7 +696,7 @@
                 <!-- BrainServe Connect -->
                 <div class="project-card min-w-[calc(100vw-2.75rem)] sm:min-w-[400px] md:min-w-[440px] xl:min-w-[460px] bg-zinc-900 border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden group snap-start">
                     <div class="w-full h-48 sm:h-56 md:h-64 bg-zinc-950 overflow-hidden flex items-center justify-center">
-                        <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1790075679/IMG-20260922-WA0000_xdeqee.jpg" alt="BrainServe Connect CEO dashboard demo" loading="lazy" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105">
+                        <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1790075679/IMG-20260922-WA0000_xdeqee.jpg" alt="BrainServe Connect CEO dashboard demo" loading="lazy" class="project-img w-full h-full object-contain">
                     </div>
                     <div class="p-6 sm:p-8">
                         <div class="text-5xl mb-4">🔐</div>
@@ -570,7 +740,7 @@
 
                 <!-- 1. Healthcare Patient Management System -->
                 <div class="project-card min-w-[calc(100vw-2.75rem)] sm:min-w-[400px] md:min-w-[440px] xl:min-w-[460px] bg-zinc-900 border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden group snap-start">
-                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774878074/Healthcare_mangement_architure_bgguda.png" alt="Healthcare Patient Management System" loading="lazy" class="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-700 group-hover:scale-105">
+                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774878074/Healthcare_mangement_architure_bgguda.png" alt="Healthcare Patient Management System" loading="lazy" class="project-img w-full h-48 sm:h-56 md:h-64 object-cover">
                     <div class="p-6 sm:p-8">
                         <div class="text-5xl mb-4">🏥</div>
                         <h3 class="heading-font text-lg sm:text-xl md:text-2xl font-medium text-white leading-tight break-words">Healthcare Patient Management System</h3>
@@ -608,7 +778,7 @@
 
                 <!-- 2. Payment Processing Microservice -->
                 <div class="project-card min-w-[calc(100vw-2.75rem)] sm:min-w-[400px] md:min-w-[440px] xl:min-w-[460px] bg-zinc-900 border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden group snap-start">
-                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774878074/payment_processing_microservice_iomhqu.png" alt="Payment Processing Microservice" loading="lazy" class="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-700 group-hover:scale-105">
+                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774878074/payment_processing_microservice_iomhqu.png" alt="Payment Processing Microservice" loading="lazy" class="project-img w-full h-48 sm:h-56 md:h-64 object-cover">
                     <div class="p-6 sm:p-8">
                         <div class="text-5xl mb-4">💳</div>
                         <h3 class="heading-font text-lg sm:text-xl md:text-2xl font-medium text-white leading-tight break-words">Payment Processing Microservice</h3>
@@ -642,7 +812,7 @@
 
                 <!-- 3. Diabetic Retinopathy Detection -->
                 <div class="project-card min-w-[calc(100vw-2.75rem)] sm:min-w-[400px] md:min-w-[440px] xl:min-w-[460px] bg-zinc-900 border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden group snap-start">
-                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774878074/diabetic_Retinopathy_architure_biwgvm.png" alt="Diabetic Retinopathy Detection" loading="lazy" class="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-700 group-hover:scale-105">
+                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774878074/diabetic_Retinopathy_architure_biwgvm.png" alt="Diabetic Retinopathy Detection" loading="lazy" class="project-img w-full h-48 sm:h-56 md:h-64 object-cover">
                     <div class="p-6 sm:p-8">
                         <div class="text-5xl mb-4">🧠</div>
                         <h3 class="heading-font text-lg sm:text-xl md:text-2xl font-medium text-white leading-tight break-words">Diabetic Retinopathy Detection</h3>
@@ -687,7 +857,7 @@
         <div class="space-y-10 md:space-y-16 lg:space-y-24">
             <div class="blog-card flex flex-col lg:flex-row gap-6 md:gap-10 lg:gap-12 items-center bg-zinc-800/70 backdrop-blur rounded-2xl sm:rounded-3xl border border-white/10 hover:border-orange-500 group p-4 sm:p-6 md:p-8">
                 <div class="lg:w-5/12">
-                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774877528/healhcare_management_ym7doc.png" alt="Healthcare Microservices Figma Diagram" loading="lazy" class="w-full h-52 sm:h-64 lg:h-80 object-cover rounded-xl sm:rounded-2xl transition-transform duration-700 group-hover:scale-105">
+                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774877528/healhcare_management_ym7doc.png" alt="Healthcare Microservices Figma Diagram" loading="lazy" class="w-full h-52 sm:h-64 lg:h-80 object-cover rounded-xl sm:rounded-2xl">
                 </div>
                 <div class="lg:w-7/12">
                     <div class="text-xs text-orange-400 font-medium mb-3">MICROSERVICES ARCHITECTURE</div>
@@ -698,7 +868,7 @@
 
             <div class="blog-card flex flex-col lg:flex-row-reverse gap-6 md:gap-10 lg:gap-12 items-center bg-zinc-800/70 backdrop-blur rounded-2xl sm:rounded-3xl border border-white/10 hover:border-orange-500 group p-4 sm:p-6 md:p-8">
                 <div class="lg:w-5/12">
-                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774877528/payment_service_wlhtdi.png" alt="Payment Processing Figma Diagram" loading="lazy" class="w-full h-52 sm:h-64 lg:h-80 object-cover rounded-xl sm:rounded-2xl transition-transform duration-700 group-hover:scale-105">
+                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774877528/payment_service_wlhtdi.png" alt="Payment Processing Figma Diagram" loading="lazy" class="w-full h-52 sm:h-64 lg:h-80 object-cover rounded-xl sm:rounded-2xl">
                 </div>
                 <div class="lg:w-7/12">
                     <div class="text-xs text-orange-400 font-medium mb-3">PAYMENT FLOW</div>
@@ -709,7 +879,7 @@
 
             <div class="blog-card flex flex-col lg:flex-row gap-6 md:gap-10 lg:gap-12 items-center bg-zinc-800/70 backdrop-blur rounded-2xl sm:rounded-3xl border border-white/10 hover:border-orange-500 group p-4 sm:p-6 md:p-8">
                 <div class="lg:w-5/12">
-                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774877528/diabatic_Retino_dzfqcj.png" alt="Diabetic Retinopathy Figma Diagram" loading="lazy" class="w-full h-52 sm:h-64 lg:h-80 object-cover rounded-xl sm:rounded-2xl transition-transform duration-700 group-hover:scale-105">
+                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774877528/diabatic_Retino_dzfqcj.png" alt="Diabetic Retinopathy Figma Diagram" loading="lazy" class="w-full h-52 sm:h-64 lg:h-80 object-cover rounded-xl sm:rounded-2xl">
                 </div>
                 <div class="lg:w-7/12">
                     <div class="text-xs text-orange-400 font-medium mb-3">AI/ML PIPELINE</div>
@@ -864,6 +1034,45 @@
             updateProjectNavigation();
         }
 
+        function setupRevealAnimations() {
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const selectors = [
+                '#about h2',
+                '#about .text-zinc-600',
+                '#skills .skill-card',
+                '#projects .project-card',
+                '#blog .blog-card',
+                '#contact h2',
+                '#contact p',
+                '#contact a'
+            ];
+
+            const elements = document.querySelectorAll(selectors.join(', '));
+            elements.forEach((element, index) => {
+                element.classList.add('motion-reveal');
+                element.style.setProperty('--motion-delay', `${Math.min((index % 6) * 70, 350)}ms`);
+            });
+
+            if (reduceMotion || !('IntersectionObserver' in window)) {
+                elements.forEach(element => element.classList.add('motion-visible'));
+                return;
+            }
+
+            const observer = new IntersectionObserver((entries, revealObserver) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('motion-visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.12,
+                rootMargin: '0px 0px -8% 0px'
+            });
+
+            elements.forEach(element => observer.observe(element));
+        }
+
         function animateExperience() {
             document.querySelectorAll('.experience-card').forEach(card => {
                 const rect = card.getBoundingClientRect();
@@ -894,6 +1103,7 @@
             if (firstNav) firstNav.classList.add('active');
             animateExperience();
             setupProjectNavigation();
+            setupRevealAnimations();
         });
 
         const contactForm = document.getElementById('contactForm');
