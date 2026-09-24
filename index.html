@@ -347,6 +347,115 @@
             transform: translateY(0);
         }
 
+        .experience-timeline {
+            position: relative;
+        }
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0.75rem;
+            bottom: 0.75rem;
+            left: 5.8rem;
+            width: 1px;
+            background: linear-gradient(180deg, rgba(249,115,22,0.65), rgba(161,161,170,0.22));
+        }
+        .experience-item {
+            position: relative;
+            display: grid;
+            grid-template-columns: 4.9rem minmax(0, 1fr);
+            gap: 2rem;
+            align-items: start;
+        }
+        .experience-marker {
+            position: absolute;
+            left: 5.42rem;
+            top: 1.55rem;
+            width: 0.8rem;
+            height: 0.8rem;
+            border-radius: 999px;
+            background: #ffffff;
+            border: 3px solid #f97316;
+            box-shadow: 0 0 0 5px rgba(249,115,22,0.10);
+            z-index: 2;
+            transition: transform 0.24s ease, box-shadow 0.24s ease;
+        }
+        .experience-item:hover .experience-marker {
+            transform: scale(1.14);
+            box-shadow: 0 0 0 7px rgba(249,115,22,0.12);
+        }
+        .experience-year {
+            padding-top: 1.15rem;
+            text-align: right;
+        }
+        .experience-detail {
+            background: rgba(255,255,255,0.72);
+            border: 1px solid #e4e4e7;
+        }
+        .experience-capability {
+            border: 1px solid #e4e4e7;
+            background: #fafafa;
+            transition: border-color 0.22s ease, background-color 0.22s ease, transform 0.22s ease;
+        }
+        .experience-capability:hover {
+            border-color: rgba(249,115,22,0.30);
+            background: #fff7ed;
+            transform: translateY(-2px);
+        }
+        .experience-tech {
+            display: inline-flex;
+            align-items: center;
+            min-height: 2rem;
+            padding: 0.4rem 0.72rem;
+            border-radius: 999px;
+            background: #f4f4f5;
+            border: 1px solid #e4e4e7;
+            color: #52525b;
+            font-size: 0.76rem;
+            line-height: 1.2;
+            transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+        }
+        .experience-tech:hover {
+            background: #f97316;
+            border-color: #f97316;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+        .current-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.38rem 0.7rem;
+            border-radius: 999px;
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            color: #ea580c;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+        .current-badge::before {
+            content: '';
+            width: 0.42rem;
+            height: 0.42rem;
+            border-radius: 999px;
+            background: #f97316;
+            box-shadow: 0 0 0 4px rgba(249,115,22,0.10);
+        }
+
+        @media (max-width: 1023px) {
+            .experience-timeline::before,
+            .experience-marker {
+                display: none;
+            }
+            .experience-item {
+                display: block;
+            }
+            .experience-year {
+                text-align: left;
+                padding: 0 0 0.65rem 0.2rem;
+            }
+        }
+
         .project-nav-button:disabled {
             opacity: 0.35;
             cursor: not-allowed;
@@ -621,59 +730,166 @@
 
     <!-- EXPERIENCE -->
     <section id="experience" class="py-14 sm:py-16 lg:py-24 bg-white">
-        <div class="max-w-screen-2xl mx-auto px-5 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <span class="bg-orange-100 text-orange-600 px-5 py-2 rounded-3xl text-sm font-semibold">EXPERIENCE</span>
-                <h2 class="heading-font text-3xl sm:text-4xl md:text-5xl mt-4 text-zinc-900">Professional Journey</h2>
+        <div class="max-w-screen-xl mx-auto px-5 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-10 sm:mb-12 lg:mb-14">
+                <span class="bg-orange-100 text-orange-600 px-5 py-2 rounded-3xl text-sm font-semibold">PROFESSIONAL EXPERIENCE</span>
+                <h2 class="heading-font text-3xl sm:text-4xl md:text-5xl mt-4 text-zinc-900">Experience</h2>
+                <p class="mt-4 text-sm sm:text-base text-zinc-500 leading-relaxed">
+                    Backend development, workflow validation, testing, and production-focused engineering.
+                </p>
             </div>
 
-            <div class="max-w-3xl mx-auto space-y-8">
-                <div class="experience-card bg-zinc-50 border border-zinc-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-sm">
-                    <div class="flex flex-col lg:flex-row justify-between items-start gap-4 lg:gap-6">
-                        <div class="flex items-center gap-3 sm:gap-4 min-w-0">
-                            <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center text-3xl">💼</div>
-                            <div>
-                                <h3 class="text-xl sm:text-2xl font-semibold text-zinc-900">Jr. Java Developer</h3>
-                                <p class="text-orange-600 font-medium">Brainserve Groups Pvt Limited</p>
+            <div class="experience-timeline max-w-5xl mx-auto space-y-7 sm:space-y-9">
+                <div class="experience-item">
+                    <div class="experience-year">
+                        <div class="text-sm font-semibold text-zinc-800">2026</div>
+                        <div class="text-xs text-zinc-500 mt-1">Present</div>
+                    </div>
+                    <span class="experience-marker" aria-hidden="true"></span>
+
+                    <article class="experience-card experience-detail rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-8 shadow-sm">
+                        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                            <div class="flex items-start gap-3 sm:gap-4 min-w-0">
+                                <div class="w-11 h-11 sm:w-12 sm:h-12 shrink-0 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center">
+                                    <i class="fa-solid fa-code text-lg"></i>
+                                </div>
+                                <div class="min-w-0">
+                                    <h3 class="text-xl sm:text-2xl font-semibold text-zinc-900">Jr. Java Developer</h3>
+                                    <p class="mt-1 text-orange-600 font-medium">Brainserve Groups Pvt Limited</p>
+                                </div>
+                            </div>
+                            <span class="current-badge shrink-0">Current</span>
+                        </div>
+
+                        <p class="mt-5 sm:mt-6 text-sm sm:text-base leading-relaxed text-zinc-600 max-w-3xl">
+                            Working across OYS release validation and BrainServe Connect, with hands-on exposure to role-based workflows, approvals, notifications, testing, and operational backend flows.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 mt-6">
+                            <div class="experience-capability rounded-2xl p-4">
+                                <div class="flex items-center gap-2 text-zinc-900 font-semibold text-sm">
+                                    <i class="fa-solid fa-diagram-project text-orange-500"></i>
+                                    Workflow & Access
+                                </div>
+                                <p class="mt-2 text-sm leading-relaxed text-zinc-600">
+                                    Validate role-based access, content updates, assessment delivery, approvals, and notification flows.
+                                </p>
+                            </div>
+
+                            <div class="experience-capability rounded-2xl p-4">
+                                <div class="flex items-center gap-2 text-zinc-900 font-semibold text-sm">
+                                    <i class="fa-solid fa-check-double text-orange-500"></i>
+                                    Testing & Release
+                                </div>
+                                <p class="mt-2 text-sm leading-relaxed text-zinc-600">
+                                    Perform functional and UAT checks across OYS modules and verify behavior across Chrome, Firefox, and Edge.
+                                </p>
+                            </div>
+
+                            <div class="experience-capability rounded-2xl p-4">
+                                <div class="flex items-center gap-2 text-zinc-900 font-semibold text-sm">
+                                    <i class="fa-solid fa-bug-slash text-orange-500"></i>
+                                    Defect Verification
+                                </div>
+                                <p class="mt-2 text-sm leading-relaxed text-zinc-600">
+                                    Log reproducible issues, coordinate fixes, retest changes, and check completed work against acceptance criteria.
+                                </p>
                             </div>
                         </div>
-                        <div class="text-sm text-zinc-500 font-medium">Jan 2026 – Present</div>
-                    </div>
 
-                    <p class="mt-6 sm:mt-8 text-sm sm:text-base text-zinc-700 italic leading-relaxed">"Building and validating reliable workflows for a multi-module career-development platform."</p>
-
-                    <ul class="mt-7 sm:mt-10 space-y-4 sm:space-y-5 text-sm sm:text-base text-zinc-700 leading-relaxed">
-                        <li class="flex gap-4"><span class="text-emerald-500 mt-1">✔</span> Working on OYS (Operational Yuva Sankalp), a platform that provides career guidance for students</li>
-                        <li class="flex gap-4"><span class="text-emerald-500 mt-1">✔</span> Performed functional and UAT testing across Admin Panel, E-Preparation, E-Library, Career Counselling, Resume Builder, and Alerts Hub</li>
-                        <li class="flex gap-4"><span class="text-emerald-500 mt-1">✔</span> Validated role-based access, content updates, assessment delivery, and notification workflows across Chrome, Firefox, and Edge</li>
-                        <li class="flex gap-4"><span class="text-emerald-500 mt-1">✔</span> Logged, tracked, and verified functional, UI, and cross-browser defects against requirements and acceptance criteria</li>
-                    </ul>
+                        <div class="mt-6">
+                            <p class="text-xs font-semibold tracking-wider text-zinc-400 uppercase">Backend stack exposure</p>
+                            <div class="flex flex-wrap gap-2 mt-3">
+                                <span class="experience-tech">Java</span>
+                                <span class="experience-tech">Spring Boot</span>
+                                <span class="experience-tech">Spring Security</span>
+                                <span class="experience-tech">REST APIs</span>
+                                <span class="experience-tech">Kafka</span>
+                                <span class="experience-tech">PostgreSQL</span>
+                                <span class="experience-tech">Redis</span>
+                            </div>
+                        </div>
+                    </article>
                 </div>
 
-                <div class="experience-card bg-zinc-50 border border-zinc-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-sm">
-                    <div class="flex flex-col lg:flex-row justify-between items-start gap-4 lg:gap-6">
-                        <div class="flex items-center gap-3 sm:gap-4 min-w-0">
-                            <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center text-3xl">💼</div>
-                            <div>
-                                <h3 class="text-xl sm:text-2xl font-semibold text-zinc-900">Java Backend Developer Intern</h3>
-                                <p class="text-orange-600 font-medium">Quick Bitz Tech, Bangalore</p>
+                <div class="experience-item">
+                    <div class="experience-year">
+                        <div class="text-sm font-semibold text-zinc-800">2025</div>
+                        <div class="text-xs text-zinc-500 mt-1">May - Sep</div>
+                    </div>
+                    <span class="experience-marker" aria-hidden="true"></span>
+
+                    <article class="experience-card experience-detail rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-8 shadow-sm">
+                        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                            <div class="flex items-start gap-3 sm:gap-4 min-w-0">
+                                <div class="w-11 h-11 sm:w-12 sm:h-12 shrink-0 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center">
+                                    <i class="fa-solid fa-server text-lg"></i>
+                                </div>
+                                <div class="min-w-0">
+                                    <h3 class="text-xl sm:text-2xl font-semibold text-zinc-900">Java Backend Developer Intern</h3>
+                                    <p class="mt-1 text-orange-600 font-medium">Quick Bitz Tech, Bangalore</p>
+                                </div>
+                            </div>
+                            <div class="text-sm text-zinc-500 font-medium shrink-0">May 2025 - Sep 2025</div>
+                        </div>
+
+                        <p class="mt-5 sm:mt-6 text-sm sm:text-base leading-relaxed text-zinc-600 max-w-3xl">
+                            Worked on Spring Boot backend development, event-driven workflows, AWS integrations, role-based access, and scheduled application logic.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 mt-6">
+                            <div class="experience-capability rounded-2xl p-4">
+                                <div class="flex items-center gap-2 text-zinc-900 font-semibold text-sm">
+                                    <i class="fa-solid fa-cubes text-orange-500"></i>
+                                    Backend Development
+                                </div>
+                                <p class="mt-2 text-sm leading-relaxed text-zinc-600">
+                                    Built Spring Boot microservices and worked with event-driven application flows using Apache Kafka.
+                                </p>
+                            </div>
+
+                            <div class="experience-capability rounded-2xl p-4">
+                                <div class="flex items-center gap-2 text-zinc-900 font-semibold text-sm">
+                                    <i class="fa-solid fa-cloud text-orange-500"></i>
+                                    Cloud & Data
+                                </div>
+                                <p class="mt-2 text-sm leading-relaxed text-zinc-600">
+                                    Integrated AWS SES for transactional email and AWS RDS PostgreSQL for application persistence.
+                                </p>
+                            </div>
+
+                            <div class="experience-capability rounded-2xl p-4">
+                                <div class="flex items-center gap-2 text-zinc-900 font-semibold text-sm">
+                                    <i class="fa-solid fa-gears text-orange-500"></i>
+                                    Security & Automation
+                                </div>
+                                <p class="mt-2 text-sm leading-relaxed text-zinc-600">
+                                    Worked with Spring Security RBAC, CI/CD, and scheduler logic for Purchase Order status transitions.
+                                </p>
                             </div>
                         </div>
-                        <div class="text-sm text-zinc-500 font-medium">May 2025 – Sep 2025</div>
-                    </div>
 
-                    <p class="mt-6 sm:mt-8 text-sm sm:text-base text-zinc-700 italic leading-relaxed">"Real-world backend engineering — from microservices to cloud integrations, shipped in production."</p>
+                        <div class="mt-6 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5">
+                            <div>
+                                <p class="text-xs font-semibold tracking-wider text-zinc-400 uppercase">Technologies</p>
+                                <div class="flex flex-wrap gap-2 mt-3">
+                                    <span class="experience-tech">Java</span>
+                                    <span class="experience-tech">Spring Boot</span>
+                                    <span class="experience-tech">Apache Kafka</span>
+                                    <span class="experience-tech">AWS SES</span>
+                                    <span class="experience-tech">AWS RDS</span>
+                                    <span class="experience-tech">PostgreSQL</span>
+                                    <span class="experience-tech">Spring Security</span>
+                                    <span class="experience-tech">CI/CD</span>
+                                </div>
+                            </div>
 
-                    <ul class="mt-7 sm:mt-10 space-y-4 sm:space-y-5 text-sm sm:text-base text-zinc-700 leading-relaxed">
-                        <li class="flex gap-4"><span class="text-emerald-500 mt-1">✔</span> Built scalable microservices using Java Spring Boot and event-driven architecture with Apache Kafka</li>
-                        <li class="flex gap-4"><span class="text-emerald-500 mt-1">✔</span> Integrated AWS SES for transactional emails and AWS RDS PostgreSQL for data persistence</li>
-                        <li class="flex gap-4"><span class="text-emerald-500 mt-1">✔</span> Contributed to CI/CD pipelines and implemented role-based access control using Spring Security</li>
-                        <li class="flex gap-4"><span class="text-emerald-500 mt-1">✔</span> Developed scheduler logic to automatically manage Purchase Order states (Expired, Active, Pending)</li>
-                    </ul>
-
-                    <a href="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774870409/Jety_Intern_certificate_snfc78.pdf" target="_blank" class="mt-10 inline-flex items-center gap-2 text-sm font-medium text-orange-600 hover:text-orange-700 transition-colors">
-                        <i class="fa-solid fa-file-pdf"></i> View Internship Certificate
-                    </a>
+                            <a href="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774870409/Jety_Intern_certificate_snfc78.pdf" target="_blank" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-orange-200 bg-orange-50 text-sm font-medium text-orange-600 hover:bg-orange-100 transition-colors shrink-0">
+                                <i class="fa-solid fa-file-pdf"></i>
+                                View Certificate
+                            </a>
+                        </div>
+                    </article>
                 </div>
             </div>
         </div>
@@ -1055,6 +1271,7 @@
                 '#about h2',
                 '#about .text-zinc-600',
                 '#skills .skill-card',
+                '#experience .experience-capability',
                 '#projects .project-card',
                 '#blog .blog-card',
                 '#contact h2',
