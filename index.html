@@ -112,6 +112,60 @@
             scroll-snap-stop: always;
         }
 
+        .skill-card {
+            position: relative;
+            overflow: hidden;
+            min-height: 100%;
+            background:
+                radial-gradient(circle at top right, rgba(249, 115, 22, 0.08), transparent 34%),
+                #18181b;
+            transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+        }
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 1.5rem;
+            right: 1.5rem;
+            height: 2px;
+            background: linear-gradient(90deg, #f97316, transparent);
+            opacity: 0.8;
+        }
+        .skill-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(249, 115, 22, 0.7);
+        }
+        .skill-icon {
+            width: 2.75rem;
+            height: 2.75rem;
+            flex: 0 0 auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.9rem;
+            color: #fb923c;
+            background: rgba(249, 115, 22, 0.10);
+            border: 1px solid rgba(249, 115, 22, 0.18);
+        }
+        .skill-chip {
+            display: inline-flex;
+            align-items: center;
+            min-height: 2.1rem;
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+            background: #27272a;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: #d4d4d8;
+            font-size: 0.78rem;
+            line-height: 1.2;
+            white-space: normal;
+        }
+        .skill-note {
+            color: #a1a1aa;
+            font-size: 0.86rem;
+            line-height: 1.55;
+        }
+
         .project-nav-button:disabled {
             opacity: 0.35;
             cursor: not-allowed;
@@ -243,62 +297,139 @@
         </div>
     </section>
 
-    <!-- SKILLS - Full List -->
+    <!-- SKILLS - Recruiter-friendly backend stack -->
     <section id="skills" class="py-12 sm:py-14 lg:py-24 bg-zinc-950">
         <div class="max-w-screen-2xl mx-auto px-5 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
+            <div class="max-w-3xl mx-auto text-center mb-9 sm:mb-12">
                 <span class="bg-orange-100 text-orange-600 px-5 py-2 rounded-3xl text-sm font-semibold">EXPERTISE</span>
-                <h2 class="heading-font text-3xl sm:text-4xl md:text-5xl mt-4 text-white">Skills & Technologies</h2>
+                <h2 class="heading-font text-3xl sm:text-4xl md:text-5xl mt-4 text-white">Backend Skills & Technologies</h2>
+                <p class="mt-4 text-sm sm:text-base text-zinc-400 leading-relaxed">
+                    The stack I use across backend development, APIs, security, distributed systems, databases, testing, and delivery.
+                </p>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
-                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 hover:border-orange-500 transition-colors">
-                    <h3 class="font-semibold text-xl mb-6 flex items-center gap-3 text-white"><i class="fa-solid fa-code text-orange-500"></i> Programming</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 sm:px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-xs sm:text-sm leading-relaxed">Java (Core, OOPs, Multithreading, Collections, JDBC, Servlets)</span>
-                        <span class="px-3 sm:px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-xs sm:text-sm leading-relaxed">Python</span>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+                <article class="skill-card border border-zinc-700 rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-7">
+                    <div class="flex items-start gap-4">
+                        <div class="skill-icon"><i class="fa-brands fa-java text-xl"></i></div>
+                        <div>
+                            <h3 class="font-semibold text-lg sm:text-xl text-white">Java Core</h3>
+                            <p class="skill-note mt-1">Language fundamentals and backend programming.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 hover:border-orange-500 transition-colors">
-                    <h3 class="font-semibold text-xl mb-6 flex items-center gap-3 text-white"><i class="fa-solid fa-layer-group text-orange-500"></i> Frameworks</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 sm:px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-xs sm:text-sm leading-relaxed">Spring Boot • Spring MVC • Spring Security</span>
-                        <span class="px-3 sm:px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-xs sm:text-sm leading-relaxed">Spring Cloud • Hibernate • Spring Data JPA</span>
-                        <span class="px-3 sm:px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-xs sm:text-sm leading-relaxed">OAuth 2.0 • Razorpay • PayPal SDKs • JWT</span>
+                    <div class="flex flex-wrap gap-2 mt-5">
+                        <span class="skill-chip">Java 8 / 17 / 21</span>
+                        <span class="skill-chip">OOP</span>
+                        <span class="skill-chip">Multithreading</span>
+                        <span class="skill-chip">Collections</span>
+                        <span class="skill-chip">Generics</span>
+                        <span class="skill-chip">JDBC</span>
                     </div>
-                </div>
-                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 hover:border-orange-500 transition-colors">
-                    <h3 class="font-semibold text-xl mb-6 flex items-center gap-3 text-white"><i class="fa-solid fa-globe text-orange-500"></i> Web Technologies</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 sm:px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-xs sm:text-sm leading-relaxed">RESTful APIs • WebFlux</span>
-                        <span class="px-3 sm:px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-xs sm:text-sm leading-relaxed">HTML • CSS • Thymeleaf • JSP • JavaScript</span>
+                </article>
+
+                <article class="skill-card border border-zinc-700 rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-7">
+                    <div class="flex items-start gap-4">
+                        <div class="skill-icon"><i class="fa-solid fa-leaf text-lg"></i></div>
+                        <div>
+                            <h3 class="font-semibold text-lg sm:text-xl text-white">Spring Backend</h3>
+                            <p class="skill-note mt-1">Application, persistence, and reactive backend development.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 hover:border-orange-500 transition-colors">
-                    <h3 class="font-semibold text-xl mb-6 flex items-center gap-3 text-white"><i class="fa-solid fa-database text-orange-500"></i> Databases</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 sm:px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-xs sm:text-sm leading-relaxed">MySQL • Oracle • MongoDB • PostgreSQL</span>
+                    <div class="flex flex-wrap gap-2 mt-5">
+                        <span class="skill-chip">Spring Boot</span>
+                        <span class="skill-chip">Spring MVC</span>
+                        <span class="skill-chip">Spring Data JPA</span>
+                        <span class="skill-chip">Hibernate</span>
+                        <span class="skill-chip">Spring Cloud</span>
+                        <span class="skill-chip">WebFlux</span>
                     </div>
-                </div>
-                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 hover:border-orange-500 transition-colors">
-                    <h3 class="font-semibold text-xl mb-6 flex items-center gap-3 text-white"><i class="fa-solid fa-cloud text-orange-500"></i> Cloud & Deployment</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 sm:px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-xs sm:text-sm leading-relaxed">AWS (EC2) • Docker (CI/CD) • GitHub/GitLab</span>
-                        <span class="px-3 sm:px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-xs sm:text-sm leading-relaxed">JUnit/Mockito • Agile/SDLC</span>
+                </article>
+
+                <article class="skill-card border border-zinc-700 rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-7">
+                    <div class="flex items-start gap-4">
+                        <div class="skill-icon"><i class="fa-solid fa-diagram-project text-lg"></i></div>
+                        <div>
+                            <h3 class="font-semibold text-lg sm:text-xl text-white">Architecture & Messaging</h3>
+                            <p class="skill-note mt-1">Service communication and event-driven application design.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 hover:border-orange-500 transition-colors">
-                    <h3 class="font-semibold text-xl mb-6 flex items-center gap-3 text-white"><i class="fa-solid fa-message text-orange-500"></i> Messaging & Architecture</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 sm:px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-xs sm:text-sm leading-relaxed">Apache Kafka • Microservices • Event-Driven</span>
-                        <span class="px-3 sm:px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-xs sm:text-sm leading-relaxed">gRPC + Protobuf • Eureka • API Gateway</span>
+                    <div class="flex flex-wrap gap-2 mt-5">
+                        <span class="skill-chip">Microservices</span>
+                        <span class="skill-chip">REST APIs</span>
+                        <span class="skill-chip">Apache Kafka</span>
+                        <span class="skill-chip">Event-Driven</span>
+                        <span class="skill-chip">gRPC</span>
+                        <span class="skill-chip">Protocol Buffers</span>
+                        <span class="skill-chip">API Gateway</span>
+                        <span class="skill-chip">Eureka</span>
                     </div>
-                </div>
-                <div class="skill-card bg-zinc-900 border border-zinc-700 rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 hover:border-orange-500 transition-colors">
-                    <h3 class="font-semibold text-xl mb-6 flex items-center gap-3 text-white"><i class="fa-solid fa-tools text-orange-500"></i> Tools</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 sm:px-4 py-2 bg-zinc-800 text-zinc-300 rounded-3xl text-xs sm:text-sm leading-relaxed">Git • Postman • IntelliJ IDEA • Eclipse/STS • MobaXterm</span>
+                </article>
+
+                <article class="skill-card border border-zinc-700 rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-7">
+                    <div class="flex items-start gap-4">
+                        <div class="skill-icon"><i class="fa-solid fa-shield-halved text-lg"></i></div>
+                        <div>
+                            <h3 class="font-semibold text-lg sm:text-xl text-white">Security</h3>
+                            <p class="skill-note mt-1">Authentication and role-based API protection.</p>
+                        </div>
                     </div>
-                </div>
+                    <div class="flex flex-wrap gap-2 mt-5">
+                        <span class="skill-chip">Spring Security</span>
+                        <span class="skill-chip">JWT</span>
+                        <span class="skill-chip">OAuth 2.0</span>
+                        <span class="skill-chip">RBAC</span>
+                        <span class="skill-chip">BCrypt</span>
+                        <span class="skill-chip">Secure Coding</span>
+                    </div>
+                </article>
+
+                <article class="skill-card border border-zinc-700 rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-7">
+                    <div class="flex items-start gap-4">
+                        <div class="skill-icon"><i class="fa-solid fa-database text-lg"></i></div>
+                        <div>
+                            <h3 class="font-semibold text-lg sm:text-xl text-white">Data & Caching</h3>
+                            <p class="skill-note mt-1">Relational, document, and runtime data stores.</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-5">
+                        <span class="skill-chip">PostgreSQL</span>
+                        <span class="skill-chip">MySQL</span>
+                        <span class="skill-chip">MongoDB</span>
+                        <span class="skill-chip">Oracle</span>
+                        <span class="skill-chip">Redis</span>
+                        <span class="skill-chip">Flyway</span>
+                    </div>
+                </article>
+
+                <article class="skill-card border border-zinc-700 rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-7">
+                    <div class="flex items-start gap-4">
+                        <div class="skill-icon"><i class="fa-solid fa-cloud-arrow-up text-lg"></i></div>
+                        <div>
+                            <h3 class="font-semibold text-lg sm:text-xl text-white">Delivery, Testing & Tools</h3>
+                            <p class="skill-note mt-1">Build, test, debug, and deployment workflow.</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-5">
+                        <span class="skill-chip">AWS EC2 / RDS / SES</span>
+                        <span class="skill-chip">Docker</span>
+                        <span class="skill-chip">GitHub Actions</span>
+                        <span class="skill-chip">GitLab CI</span>
+                        <span class="skill-chip">JUnit 5</span>
+                        <span class="skill-chip">Mockito</span>
+                        <span class="skill-chip">Postman</span>
+                        <span class="skill-chip">Git</span>
+                        <span class="skill-chip">IntelliJ IDEA</span>
+                    </div>
+                </article>
+            </div>
+
+            <div class="mt-5 sm:mt-6 flex flex-wrap justify-center gap-2 text-xs sm:text-sm text-zinc-500">
+                <span>Supporting:</span>
+                <span>React</span><span>•</span>
+                <span>TypeScript</span><span>•</span>
+                <span>HTML/CSS</span><span>•</span>
+                <span>Thymeleaf/JSP</span><span>•</span>
+                <span>Python</span>
             </div>
         </div>
     </section>
