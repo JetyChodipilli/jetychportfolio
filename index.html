@@ -3,6 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jety Chodipilli is a Java Backend Developer working with Spring Boot, Spring Security, Kafka, PostgreSQL, Redis, Docker, AWS, REST APIs, microservices, and event-driven systems.">
+    <meta name="keywords" content="Java Backend Developer, Spring Boot Developer, Java Developer, Microservices, Kafka, PostgreSQL, Redis, Spring Security, REST APIs, Docker, AWS, System Design">
+    <meta name="author" content="Jety Chodipilli">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0f172a">
+
+    <meta property="og:title" content="Jety Chodipilli | Java Backend Developer">
+    <meta property="og:description" content="Java backend portfolio focused on Spring Boot, microservices, Kafka, security, distributed workflows, and production-focused engineering.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774869278/IMG_20260330_164201_qdj4z0.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jety Chodipilli | Java Backend Developer">
+    <meta name="twitter:description" content="Spring Boot, Microservices, Kafka, PostgreSQL, Redis, Docker, AWS, and secure backend systems.">
+    <meta name="twitter:image" content="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774869278/IMG_20260330_164201_qdj4z0.png">
+
     <title>Jety Chodipilli | Java Backend Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -15,6 +31,23 @@
             overflow-x: hidden;
         }
         .heading-font { font-family: 'Space Grotesk', sans-serif; }
+        .skip-link {
+            position: fixed;
+            top: 0.75rem;
+            left: 0.75rem;
+            z-index: 120;
+            transform: translateY(-160%);
+            padding: 0.65rem 0.9rem;
+            border-radius: 0.8rem;
+            background: #f97316;
+            color: white;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
         #scrollProgress {
             position: fixed;
             inset: 0 auto auto 0;
@@ -635,6 +668,7 @@
     </style>
 </head>
 <body class="bg-zinc-950 text-white min-w-0">
+    <a href="#projects" class="skip-link">Skip to projects</a>
     <div id="scrollProgress" aria-hidden="true"></div>
 
     <!-- HEADER -->
@@ -649,22 +683,22 @@
             </button>
 
             <nav class="hidden xl:flex items-center gap-6 2xl:gap-8 text-sm font-medium">
-                <a onclick="navigateToSection('hero')" class="nav-link active">Home</a>
-                <a onclick="navigateToSection('about')" class="nav-link">About</a>
-                <a onclick="navigateToSection('skills')" class="nav-link">Skills</a>
-                <a onclick="navigateToSection('experience')" class="nav-link">Experience</a>
-                <a onclick="navigateToSection('projects')" class="nav-link">Projects</a>
-                <a onclick="navigateToSection('blog')" class="nav-link">Notes</a>
-                <a onclick="navigateToSection('contact')" class="nav-link">Contact</a>
+                <a href="#hero" onclick="navigateToSection('hero'); return false;" class="nav-link active">Home</a>
+                <a href="#about" onclick="navigateToSection('about'); return false;" class="nav-link">About</a>
+                <a href="#skills" onclick="navigateToSection('skills'); return false;" class="nav-link">Skills</a>
+                <a href="#experience" onclick="navigateToSection('experience'); return false;" class="nav-link">Experience</a>
+                <a href="#projects" onclick="navigateToSection('projects'); return false;" class="nav-link">Projects</a>
+                <a href="#blog" onclick="navigateToSection('blog'); return false;" class="nav-link">Notes</a>
+                <a href="#contact" onclick="navigateToSection('contact'); return false;" class="nav-link">Contact</a>
             </nav>
 
             <div class="flex items-center gap-2 sm:gap-3">
                 <div class="hidden lg:flex items-center gap-2 2xl:gap-3">
-                    <a href="https://res.cloudinary.com/dtl11fi8q/raw/upload/v1790235616/Jety_Chodipilli_Java_Backend_Developer_Template_wpazbp.docx" target="_blank" class="flex items-center gap-2 px-4 py-2.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-2xl text-sm font-semibold transition-all">
+                    <a href="https://res.cloudinary.com/dtl11fi8q/image/upload/v1790238840/Jety_Chodipilli_Java_Backend_Developer_eyd961.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-2xl text-sm font-semibold transition-all">
                         <i class="fa-solid fa-download"></i> Resume
                     </a>
-                    <a href="https://github.com/JetyChodipilli" target="_blank" aria-label="GitHub" class="w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-xl text-xl transition-all"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://linkedin.com/in/jety-chodipilli" target="_blank" aria-label="LinkedIn" class="w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-xl text-xl transition-all"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/JetyChodipilli" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-xl text-xl transition-all"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://linkedin.com/in/jety-chodipilli" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-xl text-xl transition-all"><i class="fa-brands fa-linkedin"></i></a>
                     <button onclick="navigateToSection('contact')" class="hidden 2xl:inline-flex px-5 py-2.5 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-2xl transition-all">Work With Me</button>
                 </div>
 
@@ -684,11 +718,11 @@
                     <button onclick="mobileNavigate('projects')" class="text-left px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl hover:bg-white/10">Projects</button>
                     <button onclick="mobileNavigate('blog')" class="text-left px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl hover:bg-white/10">Notes</button>
                     <button onclick="mobileNavigate('contact')" class="text-left px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl hover:bg-white/10">Contact</button>
-                    <a href="https://res.cloudinary.com/dtl11fi8q/raw/upload/v1790235616/Jety_Chodipilli_Java_Backend_Developer_Template_wpazbp.docx" target="_blank" class="px-4 py-3 rounded-xl hover:bg-white/10"><i class="fa-solid fa-download mr-2"></i>Resume</a>
+                    <a href="https://res.cloudinary.com/dtl11fi8q/image/upload/v1790238840/Jety_Chodipilli_Java_Backend_Developer_eyd961.pdf" target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-xl hover:bg-white/10"><i class="fa-solid fa-download mr-2"></i>Resume</a>
                 </nav>
                 <div class="mt-3 flex gap-3">
-                    <a href="https://github.com/JetyChodipilli" target="_blank" class="flex-1 px-4 py-3 text-center rounded-xl bg-white/10"><i class="fa-brands fa-github mr-2"></i>GitHub</a>
-                    <a href="https://linkedin.com/in/jety-chodipilli" target="_blank" class="flex-1 px-4 py-3 text-center rounded-xl bg-white/10"><i class="fa-brands fa-linkedin mr-2"></i>LinkedIn</a>
+                    <a href="https://github.com/JetyChodipilli" target="_blank" rel="noopener noreferrer" class="flex-1 px-4 py-3 text-center rounded-xl bg-white/10"><i class="fa-brands fa-github mr-2"></i>GitHub</a>
+                    <a href="https://linkedin.com/in/jety-chodipilli" target="_blank" rel="noopener noreferrer" class="flex-1 px-4 py-3 text-center rounded-xl bg-white/10"><i class="fa-brands fa-linkedin mr-2"></i>LinkedIn</a>
                 </div>
             </div>
         </div>
@@ -730,14 +764,14 @@
                     <button onclick="navigateToSection('projects')" class="w-full sm:w-auto justify-center px-7 sm:px-8 py-3 sm:py-3.5 lg:py-4 bg-white text-zinc-900 hover:bg-amber-100 font-semibold rounded-2xl sm:rounded-3xl flex items-center gap-3 transition-all">
                         View Backend Work <i class="fa-solid fa-arrow-down"></i>
                     </button>
-                    <a href="https://res.cloudinary.com/dtl11fi8q/raw/upload/v1790235616/Jety_Chodipilli_Java_Backend_Developer_Template_wpazbp.docx" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto justify-center px-7 sm:px-8 py-3 sm:py-3.5 lg:py-4 border border-white/50 hover:border-white font-semibold rounded-2xl sm:rounded-3xl flex items-center gap-3 transition-all">
-                        <i class="fa-solid fa-file-word"></i> Resume
+                    <a href="https://res.cloudinary.com/dtl11fi8q/image/upload/v1790238840/Jety_Chodipilli_Java_Backend_Developer_eyd961.pdf" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto justify-center px-7 sm:px-8 py-3 sm:py-3.5 lg:py-4 border border-white/50 hover:border-white font-semibold rounded-2xl sm:rounded-3xl flex items-center gap-3 transition-all">
+                        <i class="fa-solid fa-file-pdf"></i> Resume
                     </a>
                 </div>
             </div>
 
             <div class="lg:col-span-5 order-2">
-                <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774869278/IMG_20260330_164201_qdj4z0.png" alt="Jety Chodipilli" loading="lazy" class="rounded-2xl sm:rounded-3xl shadow-2xl w-full max-w-[230px] sm:max-w-[280px] md:max-w-xs lg:max-w-none mx-auto aspect-square object-cover border-4 sm:border-6 lg:border-8 border-white/30">
+                <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774869278/IMG_20260330_164201_qdj4z0.png" alt="Jety Chodipilli" fetchpriority="high" decoding="async" class="rounded-2xl sm:rounded-3xl shadow-2xl w-full max-w-[230px] sm:max-w-[280px] md:max-w-xs lg:max-w-none mx-auto aspect-square object-cover border-4 sm:border-6 lg:border-8 border-white/30">
             </div>
         </div>
     </section>
@@ -747,7 +781,7 @@
         <div class="max-w-screen-xl mx-auto px-5 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
                 <div class="hidden lg:block lg:col-span-4">
-                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774869278/IMG_20260330_164201_qdj4z0.png" alt="Jety Chodipilli" class="rounded-3xl shadow-xl w-full max-w-sm mx-auto">
+                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774869278/IMG_20260330_164201_qdj4z0.png" alt="Jety Chodipilli" loading="lazy" decoding="async" class="rounded-3xl shadow-xl w-full max-w-sm mx-auto">
                 </div>
 
                 <div class="lg:col-span-8">
@@ -1036,7 +1070,7 @@
                         <span class="experience-chip experience-chip-light">CI/CD</span>
                     </div>
 
-                    <a href="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774870409/Jety_Intern_certificate_snfc78.pdf" target="_blank" class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-orange-600 hover:text-orange-700">
+                    <a href="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774870409/Jety_Intern_certificate_snfc78.pdf" target="_blank" rel="noopener noreferrer" class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-orange-600 hover:text-orange-700">
                         View internship certificate <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
                 </article>
@@ -1050,7 +1084,7 @@
             <div class="text-center mb-8 sm:mb-10">
                 <span class="bg-orange-100 text-orange-600 px-5 py-2 rounded-3xl text-sm font-semibold">SELECTED WORK</span>
                 <h2 class="heading-font text-3xl sm:text-4xl md:text-5xl mt-4 text-white">Featured Projects</h2>
-                <p class="mt-4 text-sm sm:text-base text-zinc-400">Swipe, scroll, drag, or use the arrows to explore the projects.</p>
+                <p class="mt-4 text-sm sm:text-base text-zinc-400">Explore backend systems, architecture choices, and implementation details. Swipe, scroll, or use the arrows.</p>
             </div>
 
             <div class="mb-4 sm:mb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -1149,7 +1183,7 @@
                             </div>
                         </div>
 
-                        <a href="https://github.com/JetyChodipilli/Healthcare-Patient-Management-System-Microservice" target="_blank" class="mt-8 inline-flex items-center gap-3 text-sm font-medium text-white hover:text-orange-400">
+                        <a href="https://github.com/JetyChodipilli/Healthcare-Patient-Management-System-Microservice" target="_blank" rel="noopener noreferrer" class="mt-8 inline-flex items-center gap-3 text-sm font-medium text-white hover:text-orange-400">
                             View on GitHub <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
@@ -1183,7 +1217,7 @@
                             </div>
                         </div>
 
-                        <a href="https://github.com/JetyChodipilli/Payment-Processing-Microservice-with-Stripe-and-MySQL" target="_blank" class="mt-8 inline-flex items-center gap-3 text-sm font-medium text-white hover:text-orange-400">
+                        <a href="https://github.com/JetyChodipilli/Payment-Processing-Microservice-with-Stripe-and-MySQL" target="_blank" rel="noopener noreferrer" class="mt-8 inline-flex items-center gap-3 text-sm font-medium text-white hover:text-orange-400">
                             View on GitHub <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
@@ -1217,7 +1251,7 @@
                             </div>
                         </div>
 
-                        <a href="https://github.com/JetyChodipilli/Diabetic-Retinopathy-Using-Machine-learning-Algorithms" target="_blank" class="mt-8 inline-flex items-center gap-3 text-sm font-medium text-white hover:text-orange-400">
+                        <a href="https://github.com/JetyChodipilli/Diabetic-Retinopathy-Using-Machine-learning-Algorithms" target="_blank" rel="noopener noreferrer" class="mt-8 inline-flex items-center gap-3 text-sm font-medium text-white hover:text-orange-400">
                             View on GitHub <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
@@ -1288,7 +1322,7 @@
                         <div class="decision-step"><strong class="text-zinc-200">Reason:</strong> Typed contracts and a smaller binary payload fit that service boundary better.</div>
                     </div>
 
-                    <a href="https://github.com/JetyChodipilli/Healthcare-Patient-Management-System-Microservice" target="_blank" class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-orange-400">
+                    <a href="https://github.com/JetyChodipilli/Healthcare-Patient-Management-System-Microservice" target="_blank" rel="noopener noreferrer" class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-orange-400">
                         View healthcare architecture <i class="fa-solid fa-arrow-right note-arrow"></i>
                     </a>
                 </article>
@@ -1335,8 +1369,8 @@
                         <a href="mailto:jetychodipilli@gmail.com" class="inline-flex items-center justify-center gap-3 px-6 py-3.5 bg-orange-500 hover:bg-orange-600 rounded-2xl font-semibold">
                             <i class="fa-solid fa-envelope"></i> jetychodipilli@gmail.com
                         </a>
-                        <a href="https://res.cloudinary.com/dtl11fi8q/raw/upload/v1790235616/Jety_Chodipilli_Java_Backend_Developer_Template_wpazbp.docx" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 px-6 py-3.5 border border-white/15 hover:border-orange-500/40 rounded-2xl font-semibold text-zinc-200">
-                            <i class="fa-solid fa-file-word"></i> Open Resume
+                        <a href="https://res.cloudinary.com/dtl11fi8q/image/upload/v1790238840/Jety_Chodipilli_Java_Backend_Developer_eyd961.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 px-6 py-3.5 border border-white/15 hover:border-orange-500/40 rounded-2xl font-semibold text-zinc-200">
+                            <i class="fa-solid fa-file-pdf"></i> Open Resume
                         </a>
                     </div>
                 </div>
@@ -1399,10 +1433,10 @@
                             </div>
                             <i class="fa-solid fa-arrow-right text-zinc-600"></i>
                         </a>
-                        <a href="https://res.cloudinary.com/dtl11fi8q/raw/upload/v1790235616/Jety_Chodipilli_Java_Backend_Developer_Template_wpazbp.docx" target="_blank" rel="noopener noreferrer" class="footer-link-card rounded-2xl border border-white/10 bg-white/[0.025] p-4 flex items-center justify-between gap-4">
+                        <a href="https://res.cloudinary.com/dtl11fi8q/image/upload/v1790238840/Jety_Chodipilli_Java_Backend_Developer_eyd961.pdf" target="_blank" rel="noopener noreferrer" class="footer-link-card rounded-2xl border border-white/10 bg-white/[0.025] p-4 flex items-center justify-between gap-4">
                             <div class="flex items-center gap-3">
-                                <i class="fa-solid fa-file-word text-xl text-orange-400"></i>
-                                <div><div class="text-sm font-semibold text-white">Resume</div><div class="text-xs text-zinc-500">Latest DOCX</div></div>
+                                <i class="fa-solid fa-file-pdf text-xl text-orange-400"></i>
+                                <div><div class="text-sm font-semibold text-white">Resume</div><div class="text-xs text-zinc-500">One-page ATS PDF</div></div>
                             </div>
                             <i class="fa-solid fa-arrow-right text-zinc-600"></i>
                         </a>
