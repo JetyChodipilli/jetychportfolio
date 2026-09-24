@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jety Chodipilli | Java Spring Boot Engineer</title>
+    <title>Jety Chodipilli | Java Backend Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
@@ -15,6 +15,81 @@
             overflow-x: hidden;
         }
         .heading-font { font-family: 'Space Grotesk', sans-serif; }
+        #scrollProgress {
+            position: fixed;
+            inset: 0 auto auto 0;
+            width: 0;
+            height: 2px;
+            z-index: 100;
+            background: linear-gradient(90deg, #f97316, #fb923c);
+            box-shadow: 0 0 14px rgba(249,115,22,0.55);
+            pointer-events: none;
+        }
+
+        header {
+            transition: background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+        header.header-scrolled {
+            background: rgba(9,14,25,0.98);
+            box-shadow: 0 12px 34px rgba(0,0,0,0.22);
+        }
+
+        .hero-proof, .about-proof {
+            transition: transform 0.24s cubic-bezier(0.22,1,0.36,1), border-color 0.24s ease, box-shadow 0.24s ease, background-color 0.24s ease;
+        }
+        .hero-proof:hover, .about-proof:hover {
+            transform: translateY(-4px);
+            border-color: rgba(249,115,22,0.38);
+            box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+        }
+
+        .workflow-feature {
+            position: relative;
+            overflow: hidden;
+        }
+        .workflow-feature::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -16%;
+            height: 16%;
+            background: linear-gradient(180deg, transparent, rgba(249,115,22,0.14), transparent);
+            opacity: 0;
+            pointer-events: none;
+        }
+        .workflow-feature:hover::after {
+            opacity: 1;
+            animation: workflowScan 2.8s linear infinite;
+        }
+        @keyframes workflowScan {
+            from { transform: translateY(0); }
+            to { transform: translateY(760%); }
+        }
+
+        .footer-link-card {
+            transition: transform 0.22s cubic-bezier(0.22,1,0.36,1), border-color 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease;
+        }
+        .footer-link-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(249,115,22,0.46);
+            background: rgba(255,255,255,0.055);
+            box-shadow: 0 16px 32px rgba(0,0,0,0.18);
+        }
+        .footer-link-card i:last-child {
+            transition: transform 0.22s ease;
+        }
+        .footer-link-card:hover i:last-child {
+            transform: translateX(4px);
+        }
+        .back-to-top {
+            transition: transform 0.22s cubic-bezier(0.22,1,0.36,1), border-color 0.22s ease, box-shadow 0.22s ease;
+        }
+        .back-to-top:hover {
+            transform: translateY(-4px);
+            border-color: rgba(249,115,22,0.56);
+            box-shadow: 0 10px 24px rgba(249,115,22,0.12);
+        }
 
         .mobile-menu {
             max-height: 0;
@@ -35,6 +110,10 @@
             .experience-card:hover,
             .experience-bento-card:hover,
             .engineering-note:hover,
+            .hero-proof:hover,
+            .about-proof:hover,
+            .footer-link-card:hover,
+            .back-to-top:hover,
             #hero button:hover,
             #hero a:hover,
             header a:hover,
@@ -548,13 +627,15 @@
                 opacity: 1 !important;
                 transform: none !important;
             }
-            .current-pulse::after {
+            .current-pulse::after,
+            .workflow-feature::after {
                 animation: none !important;
             }
         }
     </style>
 </head>
 <body class="bg-zinc-950 text-white min-w-0">
+    <div id="scrollProgress" aria-hidden="true"></div>
 
     <!-- HEADER -->
     <header class="glass sticky top-0 z-50 border-b border-white/10 relative">
@@ -563,7 +644,7 @@
                 <div class="w-9 h-9 sm:w-10 sm:h-10 shrink-0 bg-gradient-to-br from-orange-500 to-amber-600 rounded-xl sm:rounded-2xl flex items-center justify-center text-white text-lg sm:text-2xl font-bold shadow-inner">JC</div>
                 <div class="min-w-0">
                     <h1 class="heading-font text-base sm:text-xl md:text-2xl tracking-tight truncate">Jety Chodipilli</h1>
-                    <p class="hidden sm:block text-[11px] md:text-xs text-zinc-400 -mt-0.5 truncate">Java Spring Boot Engineer</p>
+                    <p class="hidden sm:block text-[11px] md:text-xs text-zinc-400 -mt-0.5 truncate">Java Backend Developer</p>
                 </div>
             </button>
 
@@ -579,7 +660,7 @@
 
             <div class="flex items-center gap-2 sm:gap-3">
                 <div class="hidden lg:flex items-center gap-2 2xl:gap-3">
-                    <a href="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774876198/Jety_Chodipilli_efjtox.pdf" target="_blank" class="flex items-center gap-2 px-4 py-2.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-2xl text-sm font-semibold transition-all">
+                    <a href="https://res.cloudinary.com/dtl11fi8q/raw/upload/v1790235616/Jety_Chodipilli_Java_Backend_Developer_Template_wpazbp.docx" target="_blank" class="flex items-center gap-2 px-4 py-2.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-2xl text-sm font-semibold transition-all">
                         <i class="fa-solid fa-download"></i> Resume
                     </a>
                     <a href="https://github.com/JetyChodipilli" target="_blank" aria-label="GitHub" class="w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-xl text-xl transition-all"><i class="fa-brands fa-github"></i></a>
@@ -603,7 +684,7 @@
                     <button onclick="mobileNavigate('projects')" class="text-left px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl hover:bg-white/10">Projects</button>
                     <button onclick="mobileNavigate('blog')" class="text-left px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl hover:bg-white/10">Notes</button>
                     <button onclick="mobileNavigate('contact')" class="text-left px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl hover:bg-white/10">Contact</button>
-                    <a href="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774876198/Jety_Chodipilli_efjtox.pdf" target="_blank" class="px-4 py-3 rounded-xl hover:bg-white/10"><i class="fa-solid fa-download mr-2"></i>Resume</a>
+                    <a href="https://res.cloudinary.com/dtl11fi8q/raw/upload/v1790235616/Jety_Chodipilli_Java_Backend_Developer_Template_wpazbp.docx" target="_blank" class="px-4 py-3 rounded-xl hover:bg-white/10"><i class="fa-solid fa-download mr-2"></i>Resume</a>
                 </nav>
                 <div class="mt-3 flex gap-3">
                     <a href="https://github.com/JetyChodipilli" target="_blank" class="flex-1 px-4 py-3 text-center rounded-xl bg-white/10"><i class="fa-brands fa-github mr-2"></i>GitHub</a>
@@ -614,18 +695,47 @@
     </header>
 
     <!-- HERO -->
-    <section id="hero" class="hero-bg relative overflow-hidden py-10 sm:py-14 lg:py-24 lg:min-h-[calc(100svh-80px)] lg:flex lg:items-center">
+    <section id="hero" class="hero-bg relative overflow-hidden py-10 sm:py-14 lg:py-20 lg:min-h-[calc(100svh-80px)] lg:flex lg:items-center">
         <div class="max-w-screen-2xl mx-auto px-5 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-7 sm:gap-9 lg:gap-14 items-center relative z-10">
             <div class="lg:col-span-7 order-1">
-                <h1 class="heading-font text-[2.25rem] sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.08] lg:leading-tight tracking-tighter mb-5 sm:mb-6 max-w-3xl">
-                    Building Backend Systems That Actually Work — On Time, Every Time.
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-orange-500/20 bg-orange-500/10 text-orange-300 text-xs sm:text-sm font-medium mb-5">
+                    <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+                    Java Backend Developer · Spring Boot · Microservices · Kafka
+                </div>
+
+                <h1 class="heading-font text-[2.35rem] sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.05] lg:leading-[1.02] tracking-tighter max-w-4xl">
+                    Building secure backend systems with clear workflows and reliable service boundaries.
                 </h1>
-                <p class="text-base sm:text-lg lg:text-xl leading-relaxed text-zinc-300 max-w-2xl">Java Backend Developer working with Spring Boot, Kafka, PostgreSQL, Redis, Docker, and secure workflow-driven systems.</p>
+
+                <p class="mt-5 sm:mt-6 text-base sm:text-lg lg:text-xl leading-relaxed text-zinc-300 max-w-3xl">
+                    I work with Java 21, Spring Boot 3, Spring Security, Kafka, PostgreSQL, Redis, Docker, and AWS—building APIs, role-based workflows, and microservices that are easier to test, trace, and maintain.
+                </p>
+
+                <div class="mt-7 grid grid-cols-3 gap-2 sm:gap-3 max-w-2xl">
+                    <div class="hero-proof rounded-2xl border border-white/10 bg-white/[0.045] px-3 sm:px-4 py-3">
+                        <div class="heading-font text-xl sm:text-2xl text-white">7</div>
+                        <div class="text-[11px] sm:text-xs text-zinc-400 mt-1">RBAC roles</div>
+                    </div>
+                    <div class="hero-proof rounded-2xl border border-white/10 bg-white/[0.045] px-3 sm:px-4 py-3">
+                        <div class="heading-font text-xl sm:text-2xl text-white">5</div>
+                        <div class="text-[11px] sm:text-xs text-zinc-400 mt-1">microservices</div>
+                    </div>
+                    <div class="hero-proof rounded-2xl border border-white/10 bg-white/[0.045] px-3 sm:px-4 py-3">
+                        <div class="heading-font text-xl sm:text-2xl text-white">263</div>
+                        <div class="text-[11px] sm:text-xs text-zinc-400 mt-1">automated tests</div>
+                    </div>
+                </div>
+
                 <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
-                    <button onclick="navigateToSection('projects')" class="w-full sm:w-auto justify-center px-7 sm:px-8 py-3 sm:py-3.5 lg:py-4 bg-white text-zinc-900 hover:bg-amber-100 font-semibold rounded-2xl sm:rounded-3xl flex items-center gap-3 transition-all">View My Work <i class="fa-solid fa-arrow-down"></i></button>
-                    <a href="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774876198/Jety_Chodipilli_efjtox.pdf" target="_blank" class="w-full sm:w-auto justify-center px-7 sm:px-8 py-3 sm:py-3.5 lg:py-4 border border-white/50 hover:border-white font-semibold rounded-2xl sm:rounded-3xl flex items-center gap-3 transition-all"><i class="fa-solid fa-download"></i> Resume</a>
+                    <button onclick="navigateToSection('projects')" class="w-full sm:w-auto justify-center px-7 sm:px-8 py-3 sm:py-3.5 lg:py-4 bg-white text-zinc-900 hover:bg-amber-100 font-semibold rounded-2xl sm:rounded-3xl flex items-center gap-3 transition-all">
+                        View Backend Work <i class="fa-solid fa-arrow-down"></i>
+                    </button>
+                    <a href="https://res.cloudinary.com/dtl11fi8q/raw/upload/v1790235616/Jety_Chodipilli_Java_Backend_Developer_Template_wpazbp.docx" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto justify-center px-7 sm:px-8 py-3 sm:py-3.5 lg:py-4 border border-white/50 hover:border-white font-semibold rounded-2xl sm:rounded-3xl flex items-center gap-3 transition-all">
+                        <i class="fa-solid fa-file-word"></i> Resume
+                    </a>
                 </div>
             </div>
+
             <div class="lg:col-span-5 order-2">
                 <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774869278/IMG_20260330_164201_qdj4z0.png" alt="Jety Chodipilli" loading="lazy" class="rounded-2xl sm:rounded-3xl shadow-2xl w-full max-w-[230px] sm:max-w-[280px] md:max-w-xs lg:max-w-none mx-auto aspect-square object-cover border-4 sm:border-6 lg:border-8 border-white/30">
             </div>
@@ -633,17 +743,40 @@
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="max-w-screen-2xl mx-auto px-5 sm:px-6 lg:px-8 py-12 sm:py-14 lg:py-24 bg-white">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
-            <div class="hidden lg:block lg:col-span-5">
-                <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774869278/IMG_20260330_164201_qdj4z0.png" alt="Jety Chodipilli" class="rounded-3xl shadow-xl w-full max-w-md mx-auto">
-            </div>
-            <div class="lg:col-span-7">
-                <h2 class="heading-font text-3xl sm:text-4xl lg:text-5xl mb-5 sm:mb-6 lg:mb-8 text-zinc-900">Hi, I'm Jety Chodipilli</h2>
-                <div class="text-[15px] sm:text-base lg:text-lg leading-7 text-zinc-600 space-y-4 sm:space-y-5 lg:space-y-6 max-w-3xl">
-                    <p>I'm a Java Backend Developer working with Spring Boot, Spring Security, Kafka, PostgreSQL, Redis, Docker, and REST APIs.</p>
-                    <p>At Brainserve Groups, I work on OYS and BrainServe Connect, dealing with role-based workflows, approvals, notifications, audit trails, testing, and release validation.</p>
-                    <p>I also built a five-service healthcare microservices system using Spring Cloud Gateway, JWT, Kafka, gRPC, Protocol Buffers, PostgreSQL, and Docker. I enjoy understanding how systems behave end to end and writing backend code that is easier to secure, debug, test, and maintain.</p>
+    <section id="about" class="bg-white py-12 sm:py-14 lg:py-20">
+        <div class="max-w-screen-xl mx-auto px-5 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+                <div class="hidden lg:block lg:col-span-4">
+                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1774869278/IMG_20260330_164201_qdj4z0.png" alt="Jety Chodipilli" class="rounded-3xl shadow-xl w-full max-w-sm mx-auto">
+                </div>
+
+                <div class="lg:col-span-8">
+                    <span class="text-xs font-semibold tracking-[0.18em] uppercase text-orange-600">Professional Summary</span>
+                    <h2 class="heading-font text-3xl sm:text-4xl lg:text-5xl mt-3 text-zinc-900 max-w-4xl">
+                        Java backend development focused on secure APIs, workflow-heavy systems, and distributed services.
+                    </h2>
+
+                    <p class="mt-5 text-[15px] sm:text-base lg:text-lg leading-7 lg:leading-8 text-zinc-600 max-w-4xl">
+                        At Brainserve Groups, I work across OYS and BrainServe Connect, validating role-based workflows, approvals, notifications, release behavior, and backend-supported operations. I also built a five-service healthcare microservices system using Spring Cloud Gateway, JWT, Kafka, gRPC, PostgreSQL, and Docker. I care about clear service boundaries, predictable state transitions, and code that can be tested and debugged without guesswork.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-7">
+                        <div class="about-proof rounded-2xl border border-zinc-200 bg-zinc-50 p-4">
+                            <div class="text-orange-600 text-lg"><i class="fa-solid fa-shield-halved"></i></div>
+                            <div class="font-semibold text-zinc-900 mt-3">Security & Access</div>
+                            <div class="text-sm text-zinc-500 mt-1">Spring Security, JWT, RBAC, BCrypt</div>
+                        </div>
+                        <div class="about-proof rounded-2xl border border-zinc-200 bg-zinc-50 p-4">
+                            <div class="text-orange-600 text-lg"><i class="fa-solid fa-wave-square"></i></div>
+                            <div class="font-semibold text-zinc-900 mt-3">Distributed Workflows</div>
+                            <div class="text-sm text-zinc-500 mt-1">Kafka, gRPC, service boundaries, events</div>
+                        </div>
+                        <div class="about-proof rounded-2xl border border-zinc-200 bg-zinc-50 p-4">
+                            <div class="text-orange-600 text-lg"><i class="fa-solid fa-flask-vial"></i></div>
+                            <div class="font-semibold text-zinc-900 mt-3">Verification</div>
+                            <div class="text-sm text-zinc-500 mt-1">263 automated tests + release validation</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -777,11 +910,9 @@
 
             <div class="mt-5 sm:mt-6 flex flex-wrap justify-center gap-2 text-xs sm:text-sm text-zinc-500">
                 <span>Supporting:</span>
-                <span>React</span><span>•</span>
-                <span>TypeScript</span><span>•</span>
+                <span>Python</span><span>•</span>
                 <span>HTML/CSS</span><span>•</span>
-                <span>Thymeleaf/JSP</span><span>•</span>
-                <span>Python</span>
+                <span>Thymeleaf/JSP</span>
             </div>
         </div>
     </section>
@@ -950,15 +1081,15 @@
                     <div class="p-6 sm:p-8">
                         <div class="text-5xl mb-4">🔐</div>
                         <h3 class="heading-font text-lg sm:text-xl md:text-2xl font-medium text-white leading-tight break-words">BrainServe Connect</h3>
-                        <p class="text-sm sm:text-base text-zinc-400 mt-3 leading-relaxed break-words">A full-stack enterprise platform for visitor management, employee operations, departmental workflows, approvals, and internal communication.</p>
+                        <p class="text-sm sm:text-base text-zinc-400 mt-3 leading-relaxed break-words">An enterprise visitor and workforce platform centered on secure role-based workflows, state transitions, internal notifications, and auditability.</p>
 
                         <div class="mt-6">
                             <p class="font-medium text-white mb-2">Core Capabilities:</p>
                             <ul class="text-sm text-zinc-400 space-y-1">
-                                <li>• Seven-role RBAC with secure, role-specific dashboards and approval workflows</li>
-                                <li>• End-to-end visitor flow from security intake to QR pass, check-in, and completion</li>
-                                <li>• Employee onboarding, Team Lead assignment, task tracking, HR insights, and CEO audit approval</li>
-                                <li>• Kafka-based internal calls and workflow notifications with PostgreSQL, Redis, and Flyway</li>
+                                <li>• Seven-role RBAC with server-side authorization across System Admin, CEO, HR, Team Lead, Employee, Receptionist, and Security</li>
+                                <li>• Controlled visitor lifecycle: security intake → reception verification → approval → QR pass → check-in/completion</li>
+                                <li>• Kafka for internal calls and workflow notifications, with PostgreSQL, Redis, and Flyway supporting persistence and runtime flows</li>
+                                <li>• 263 automated tests covering workflow, access-control, notification, and regression behavior</li>
                             </ul>
                         </div>
 
@@ -968,7 +1099,7 @@
                                 <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">Java 21</span>
                                 <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">Spring Boot 3</span>
                                 <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">Spring Security</span>
-                                <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">React + TypeScript</span>
+
                                 <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">PostgreSQL</span>
                                 <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">Kafka</span>
                                 <span class="px-4 py-1 text-xs bg-zinc-800 text-zinc-300 rounded-3xl">Redis</span>
@@ -993,16 +1124,15 @@
                     <div class="p-6 sm:p-8">
                         <div class="text-5xl mb-4">🏥</div>
                         <h3 class="heading-font text-lg sm:text-xl md:text-2xl font-medium text-white leading-tight break-words">Healthcare Patient Management System</h3>
-                        <p class="text-sm sm:text-base text-zinc-400 mt-3 leading-relaxed break-words">A distributed microservices system designed to manage patient data, authentication, billing, and analytics for a healthcare application.</p>
+                        <p class="text-sm sm:text-base text-zinc-400 mt-3 leading-relaxed break-words">A five-service healthcare backend built to explore clear service boundaries, secure API entry, synchronous gRPC calls, asynchronous Kafka events, and containerized deployment.</p>
                         
                         <div class="mt-6">
-                            <p class="font-medium text-white mb-2">Services Used:</p>
+                            <p class="font-medium text-white mb-2">Architecture Highlights:</p>
                             <ul class="text-sm text-zinc-400 space-y-1">
-                                <li>• API Gateway — Routing & JWT validation</li>
-                                <li>• Auth Service — User authentication & JWT management</li>
-                                <li>• Patient Service — CRUD operations, Kafka producer, gRPC client</li>
-                                <li>• Billing Service — Billing operations via gRPC</li>
-                                <li>• Analytics Service — Real-time analytics via Kafka consumer</li>
+                                <li>• Five services: Patient, Billing, Analytics, Auth, and API Gateway</li>
+                                <li>• JWT authentication behind Spring Cloud Gateway for protected patient and billing APIs</li>
+                                <li>• gRPC + Protocol Buffers for synchronous Patient → Billing communication</li>
+                                <li>• Kafka consumer groups for analytics events, with Docker Compose for local orchestration</li>
                             </ul>
                         </div>
 
@@ -1108,8 +1238,8 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6">
-                <article class="engineering-note reveal-left lg:col-span-7 lg:row-span-2 min-h-[500px] rounded-3xl border border-white/10 bg-zinc-950">
-                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1790075679/IMG-20260922-WA0000_xdeqee.jpg" alt="BrainServe Connect interface" loading="lazy" class="note-image absolute inset-0 w-full h-full object-cover opacity-35">
+                <article class="engineering-note workflow-feature reveal-left lg:col-span-7 lg:row-span-2 min-h-[500px] rounded-3xl border border-white/10 bg-zinc-950">
+                    <img src="https://res.cloudinary.com/dtl11fi8q/image/upload/v1790235896/IMG-20260924-WA0001_xm2fga.jpg" alt="Java Spring Boot backend request and service flow" loading="lazy" class="note-image absolute inset-0 w-full h-full object-cover opacity-35">
                     <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/90 to-zinc-950/35"></div>
                     <div class="relative h-full p-6 sm:p-8 lg:p-10 flex flex-col justify-end">
                         <div class="flex items-center gap-3 text-xs font-semibold tracking-[0.16em] uppercase text-orange-400">
@@ -1190,28 +1320,144 @@
         </div>
     </section>
 
-   <!-- CONTACT - Simple Gmail Link -->
-    <section id="contact" class="bg-black py-14 sm:py-16 lg:py-24">
-        <div class="max-w-screen-2xl mx-auto px-5 sm:px-6 lg:px-8 text-center">
-            <h2 class="heading-font text-3xl sm:text-4xl md:text-5xl mb-5 sm:mb-6">Let's Build Something Great Together</h2>
-            <p class="text-zinc-400 mb-10">Have a project in mind? Feel free to reach out.</p>
-            
-            <a href="mailto:jetychodipilli@gmail.com" 
-               class="inline-flex max-w-full items-center justify-center gap-3 px-5 sm:px-8 md:px-10 py-4 sm:py-5 bg-orange-500 hover:bg-orange-600 rounded-2xl sm:rounded-3xl text-sm sm:text-base md:text-xl font-semibold transition-all break-all sm:break-normal">
-                <i class="fa-solid fa-envelope"></i>
-                jetychodipilli@gmail.com
-            </a>
+   <!-- CONTACT -->
+    <section id="contact" class="bg-black py-14 sm:py-16 lg:py-20">
+        <div class="max-w-screen-xl mx-auto px-5 sm:px-6 lg:px-8">
+            <div class="rounded-3xl border border-white/10 bg-gradient-to-br from-zinc-950 to-zinc-900 p-6 sm:p-9 lg:p-12 text-center relative overflow-hidden">
+                <div class="absolute -top-24 -right-16 w-64 h-64 rounded-full bg-orange-500/10 blur-3xl"></div>
+                <div class="relative">
+                    <span class="text-xs font-semibold tracking-[0.18em] uppercase text-orange-400">Let's Connect</span>
+                    <h2 class="heading-font text-3xl sm:text-4xl md:text-5xl mt-3">Hiring for Java / Spring Boot?</h2>
+                    <p class="text-zinc-400 mt-4 max-w-2xl mx-auto leading-relaxed">
+                        I'm interested in backend work involving APIs, security, distributed systems, event-driven workflows, and production-focused engineering.
+                    </p>
+                    <div class="mt-7 flex flex-col sm:flex-row justify-center gap-3">
+                        <a href="mailto:jetychodipilli@gmail.com" class="inline-flex items-center justify-center gap-3 px-6 py-3.5 bg-orange-500 hover:bg-orange-600 rounded-2xl font-semibold">
+                            <i class="fa-solid fa-envelope"></i> jetychodipilli@gmail.com
+                        </a>
+                        <a href="https://res.cloudinary.com/dtl11fi8q/raw/upload/v1790235616/Jety_Chodipilli_Java_Backend_Developer_Template_wpazbp.docx" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 px-6 py-3.5 border border-white/15 hover:border-orange-500/40 rounded-2xl font-semibold text-zinc-200">
+                            <i class="fa-solid fa-file-word"></i> Open Resume
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
+    <footer class="bg-[#070b12] border-t border-white/10">
+        <div class="max-w-screen-2xl mx-auto px-5 sm:px-6 lg:px-8 py-12 lg:py-14">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+                <div class="lg:col-span-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center font-bold text-white text-xl">JC</div>
+                        <div>
+                            <div class="heading-font text-xl text-white">Jety Chodipilli</div>
+                            <div class="text-sm text-zinc-500">Java Backend Developer</div>
+                        </div>
+                    </div>
+                    <p class="mt-5 text-sm sm:text-base leading-7 text-zinc-400 max-w-md">
+                        Java backend developer working with Spring Boot, Spring Security, Kafka, PostgreSQL, Redis, Docker, AWS, and service-to-service communication.
+                    </p>
+                    <button onclick="navigateToSection('contact')" class="mt-6 inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-orange-500/10 border border-orange-500/20 text-orange-300 hover:bg-orange-500/15 font-semibold">
+                        Let's talk backend <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
 
-    <footer class="bg-zinc-950 py-12 border-t border-white/10">
-        <div class="max-w-screen-2xl mx-auto px-5 sm:px-8 text-center text-zinc-500 text-xs sm:text-sm">
-            © 2026 Jety Chodipilli • Built with passion in Hyderabad, India
+                <div class="lg:col-span-3">
+                    <h3 class="font-semibold text-white">Quick links</h3>
+                    <div class="mt-5 grid grid-cols-2 lg:grid-cols-1 gap-2 text-sm">
+                        <button onclick="navigateToSection('about')" class="text-left text-zinc-400 hover:text-orange-400 py-1">About</button>
+                        <button onclick="navigateToSection('skills')" class="text-left text-zinc-400 hover:text-orange-400 py-1">Skills</button>
+                        <button onclick="navigateToSection('experience')" class="text-left text-zinc-400 hover:text-orange-400 py-1">Experience</button>
+                        <button onclick="navigateToSection('projects')" class="text-left text-zinc-400 hover:text-orange-400 py-1">Projects</button>
+                        <button onclick="navigateToSection('blog')" class="text-left text-zinc-400 hover:text-orange-400 py-1">Engineering Notes</button>
+                        <button onclick="navigateToSection('contact')" class="text-left text-zinc-400 hover:text-orange-400 py-1">Contact</button>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5">
+                    <h3 class="font-semibold text-white">Connect</h3>
+                    <div class="grid sm:grid-cols-2 gap-3 mt-5">
+                        <a href="https://github.com/JetyChodipilli" target="_blank" rel="noopener noreferrer" class="footer-link-card rounded-2xl border border-white/10 bg-white/[0.025] p-4 flex items-center justify-between gap-4">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-brands fa-github text-xl text-white"></i>
+                                <div><div class="text-sm font-semibold text-white">GitHub</div><div class="text-xs text-zinc-500">Backend projects</div></div>
+                            </div>
+                            <i class="fa-solid fa-arrow-right text-zinc-600"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/jety-chodipilli" target="_blank" rel="noopener noreferrer" class="footer-link-card rounded-2xl border border-white/10 bg-white/[0.025] p-4 flex items-center justify-between gap-4">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-brands fa-linkedin text-xl text-blue-400"></i>
+                                <div><div class="text-sm font-semibold text-white">LinkedIn</div><div class="text-xs text-zinc-500">Professional profile</div></div>
+                            </div>
+                            <i class="fa-solid fa-arrow-right text-zinc-600"></i>
+                        </a>
+                        <a href="mailto:jetychodipilli@gmail.com" class="footer-link-card rounded-2xl border border-white/10 bg-white/[0.025] p-4 flex items-center justify-between gap-4">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-envelope text-xl text-orange-400"></i>
+                                <div><div class="text-sm font-semibold text-white">Email</div><div class="text-xs text-zinc-500">Start a conversation</div></div>
+                            </div>
+                            <i class="fa-solid fa-arrow-right text-zinc-600"></i>
+                        </a>
+                        <a href="https://res.cloudinary.com/dtl11fi8q/raw/upload/v1790235616/Jety_Chodipilli_Java_Backend_Developer_Template_wpazbp.docx" target="_blank" rel="noopener noreferrer" class="footer-link-card rounded-2xl border border-white/10 bg-white/[0.025] p-4 flex items-center justify-between gap-4">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-file-word text-xl text-orange-400"></i>
+                                <div><div class="text-sm font-semibold text-white">Resume</div><div class="text-xs text-zinc-500">Latest DOCX</div></div>
+                            </div>
+                            <i class="fa-solid fa-arrow-right text-zinc-600"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 pt-6 border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-5">
+                <div class="text-xs sm:text-sm text-zinc-500">© 2026 Jety Chodipilli · Java Backend Developer</div>
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs sm:text-sm text-zinc-500">
+                    <span><i class="fa-brands fa-java text-orange-400 mr-1"></i> Java</span>
+                    <span><i class="fa-solid fa-leaf text-green-500 mr-1"></i> Spring Boot</span>
+                    <span>Kafka</span>
+                    <span>PostgreSQL</span>
+                    <span>System Design</span>
+                </div>
+                <button onclick="navigateToSection('hero')" class="back-to-top w-11 h-11 rounded-2xl border border-white/10 bg-white/[0.03] text-zinc-300 flex items-center justify-center" aria-label="Back to top">
+                    <i class="fa-solid fa-arrow-up"></i>
+                </button>
+            </div>
         </div>
     </footer>
 
     <script>
+        function updateScrollUI() {
+            const doc = document.documentElement;
+            const maxScroll = Math.max(1, doc.scrollHeight - window.innerHeight);
+            const progress = Math.min(100, Math.max(0, (window.scrollY / maxScroll) * 100));
+            const progressBar = document.getElementById('scrollProgress');
+            if (progressBar) progressBar.style.width = `${progress}%`;
+
+            const header = document.querySelector('header');
+            if (header) header.classList.toggle('header-scrolled', window.scrollY > 16);
+        }
+
+        function setupActiveNavigation() {
+            if (!('IntersectionObserver' in window)) return;
+            const sections = ['hero','about','skills','experience','projects','blog','contact']
+                .map(id => document.getElementById(id))
+                .filter(Boolean);
+
+            const observer = new IntersectionObserver((entries) => {
+                const visible = entries.filter(entry => entry.isIntersecting)
+                    .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+                if (!visible) return;
+                const id = visible.target.id;
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    const action = link.getAttribute('onclick') || '';
+                    link.classList.toggle('active', action.includes(id));
+                });
+            }, { rootMargin: '-20% 0px -60% 0px', threshold: [0.05,0.15,0.35] });
+
+            sections.forEach(section => observer.observe(section));
+        }
+
         function navigateToSection(sectionId) {
             const el = document.getElementById(sectionId);
             if (!el) return;
@@ -1337,15 +1583,18 @@
         function setupRevealAnimations() {
             const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             const selectors = [
+                '#hero .hero-proof',
                 '#about h2',
                 '#about .text-zinc-600',
+                '#about .about-proof',
                 '#skills .skill-card',
                 '#experience .experience-bento-card',
                 '#projects .project-card',
                 '#blog .engineering-note',
                 '#contact h2',
                 '#contact p',
-                '#contact a'
+                '#contact a',
+                'footer .footer-link-card'
             ];
 
             const elements = document.querySelectorAll(selectors.join(', '));
@@ -1391,7 +1640,10 @@
             });
         }
 
-        window.addEventListener('scroll', animateExperience, { passive: true });
+        window.addEventListener('scroll', () => {
+            animateExperience();
+            updateScrollUI();
+        }, { passive: true });
         window.addEventListener('resize', () => {
             if (window.innerWidth >= 1280) toggleMobileMenu(true);
             updateProjectNavigation();
@@ -1413,6 +1665,8 @@
             animateExperience();
             setupProjectNavigation();
             setupRevealAnimations();
+            setupActiveNavigation();
+            updateScrollUI();
         });
 
         const contactForm = document.getElementById('contactForm');
