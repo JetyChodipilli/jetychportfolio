@@ -1,8 +1,8 @@
-# Jety Chodipilli — Java Spring Boot Engineer
+# Jety Chodipilli — Java Backend Developer
 
 ![Profile Banner](https://res.cloudinary.com/dtl11fi8q/image/upload/v1774869278/IMG_20260330_164201_qdj4z0.png)
 
-> Building reliable, scalable backend systems that actually work — on time, every time.
+> Java backend development focused on secure APIs, workflow-heavy systems, microservices, and event-driven architecture.
 
 ---
 
@@ -157,7 +157,7 @@ An advanced deep learning system for early detection and classification of Diabe
 
 ## 📄 Resume
 
-[Download Resume (PDF)](https://res.cloudinary.com/dtl11fi8q/image/upload/v1774876198/Jety_Chodipilli_efjtox.pdf)
+[Download One-Page ATS Resume (PDF)](https://res.cloudinary.com/dtl11fi8q/image/upload/v1790238840/Jety_Chodipilli_Java_Backend_Developer_eyd961.pdf)
 
 ---
 
